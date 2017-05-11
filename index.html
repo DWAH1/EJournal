@@ -3,6 +3,7 @@
 <head>
     <title>Journal</title>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="app/res/img/title-icon.png" />
 
     <!-- lib js -->
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -12,19 +13,19 @@
 
 <body>
 
-<div ng-app="journal-client" ng-controller="ctrl-init">
+    <div ng-app="journal-client" ng-controller="ctrl-init">
 
-    <b>{{ students }}</b>
+        <b>{{ students }}</b>
 
-    <div ng-repeat="student in students | orderBy : '-name'">
-        {{ student }}
+        <div ng-repeat="student in students | orderBy : '-name'">
+            {{ student }}
+        </div>
+
     </div>
 
-</div>
-
-<!-- custom js -->
-<script src="app/app.js"></script>
-<script src="app/controllers/controllers.js"></script>
+    <!-- custom js -->
+    <script src="app/app.js"></script>
+    <script src="app/controllers/controllers.js"></script>
 
 </body>
 </html>
