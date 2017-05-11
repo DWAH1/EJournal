@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Title</title>
-    <meta charset="UTF-8">
-
-    <!-- js -->
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="app/controllers/controllers.js"></script>
 
 
-</head>
 <body>
 
-    <script>
+<div ng-app="journal-client" ng-controller="ctrl-init">
 
-        var a = 4;
-        console.log(a + "!!");
+    <b>{{ students }}</b>
 
-    </script>
+    <div ng-repeat="student in students | orderBy : '-name'">
+        {{ student }}
+    </div>
+
+</div>
+
+<script>
+
+</script>
 
 </body>
 </html>
