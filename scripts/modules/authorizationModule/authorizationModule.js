@@ -30,7 +30,6 @@ authorizationModule.factory('authorizationFactory',['$userProvider', '$cookies',
         };
 
         let restoreUserFromCookies = function(cookies) {
-            console.log(cookies);
             if (cookies) {
                 $userProvider.setUser({Login: cookies.login, Roles: [$userProvider.rolesEnum.User]});
             }
@@ -44,7 +43,6 @@ authorizationModule.factory('authorizationFactory',['$userProvider', '$cookies',
                 let oldUserCookies = $cookies.getObject('user');
                 $cookies.remove('user');
                 $cookies.putObject('user', oldUserCookies, {expires: timeExpires});
-                console.log("!");
             }
         };
 

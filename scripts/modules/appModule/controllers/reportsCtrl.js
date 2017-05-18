@@ -11,17 +11,27 @@ app.controller('reportsCtrl', ['$scope', '$location', '$userProvider', 'authoriz
 }]);
 
 app.factory('reportsFactory', function () {
+
+    let typeReportEnum = {
+        TrainingLoad: 0,
+        AccountingStudentWork: 1,
+        Other: 2
+    };
+
     return [
         {
             id: 1,
+            type: typeReportEnum.TrainingLoad,
             name: "Учебная нагрузка"
         },
         {
             id: 2,
+            type: typeReportEnum.AccountingStudentWork,
             name: "Посещяемость"
         },
         {
             id: 3,
+            type: typeReportEnum.Other,
             name: "Другой отчет"
         }
     ]

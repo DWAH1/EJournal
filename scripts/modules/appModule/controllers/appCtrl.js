@@ -26,6 +26,8 @@ app.controller('appCtrl', ['$scope', '$cookies', '$cookieStore', '$location', '$
         // // alert("!");
         // console.log($cookies.get("test"));
 
+        // $cookies.remove('user');
+
 
         // for use inline of views
         $scope.goTo = function(path){
@@ -37,7 +39,6 @@ app.controller('appCtrl', ['$scope', '$cookies', '$cookieStore', '$location', '$
         // extend the scope
         angular.extend($scope, $userProvider, true);
 
-        // $cookies.remove('user');
         // restore user after full refresh page or close app
         if ($cookies.get('user')) {
             authorizationFactory.restoreUserFromCookies($cookies.getObject('user'));
