@@ -1,16 +1,18 @@
-<meta charset="utf-8">
 <div>
 
-  <span class="greeting"> Hello, <b>{{getUser().Login}}</b>! </span>
+  <span class="greeting"> Hello, <strong>{{getUser().Login}}</strong>! </span>
 
   <div>
     Reports list
     <div ng-repeat="report in reports">
-      <a href="#/reports/{{ report.id }}">{{report.name}}</a>
+      <a ui-sref='{{ report.id }}'> {{ report.name }} </a>
     </div>
   </div>
 
   <button ng-click="goTo('/settings')">Settings</button>
   <button ng-click="logOutClick()">Exit</button>
+
+  <!-- nested ui-view -->
+  <div ui-view="bookDetails"></div>
 
 </div>

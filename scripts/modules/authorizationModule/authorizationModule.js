@@ -7,9 +7,12 @@ authorizationModule.factory('authorizationFactory',['$userProvider', '$cookies',
             // check
             if (!login || login.length < 3) {
                 return false
-            } else if (pass !== '123456') {
+            } else if (pass !== '1') {
                 return false;
             }
+
+            // let userRole = login === 'admin' ?
+            //     $userProvider.rolesEnum.Admin :
 
             if (login === 'admin') {
                 $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.Admin]});
@@ -19,7 +22,7 @@ authorizationModule.factory('authorizationFactory',['$userProvider', '$cookies',
 
             let timeExpires = new Date();
             timeExpires.setMinutes(timeExpires.getMinutes() + 20);
-            $cookies.putObject('user', {login: login, pass: '123456'}, {expires: timeExpires});
+            $cookies.putObject('user', {login: login, pass: pass, role: $userProvider.getUserRole()}, {expires: timeExpires});
 
             return true;
         };
@@ -31,7 +34,7 @@ authorizationModule.factory('authorizationFactory',['$userProvider', '$cookies',
 
         let restoreUserFromCookies = function(cookies) {
             if (cookies) {
-                $userProvider.setUser({Login: cookies.login, Roles: [$userProvider.rolesEnum.User]});
+                $userProvider.setUser({Login: cookies.login, Roles: cookies.role});
             }
         };
 
@@ -77,11 +80,15 @@ authorizationModule.factory('$userProvider', function(){
         user = null;
     };
 
+    let getUserRole = function () {
+        return user.Roles;
+    };
 
     return {
         getUser: getUser,
         setUser: setUser,
         excludeUser: excludeUser,
+        getUserRole: getUserRole,
         rolesEnum: rolesEnum
     };
 });

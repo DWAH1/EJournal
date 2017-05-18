@@ -1,0 +1,56 @@
+<span>Отчет</span>
+<button ng-click="goTo('/reports')">All reports</button>
+<button ng-click="printReport()">Pint</button>
+<button ng-click="downloadReport()">Download</button>
+
+<hr>
+
+<h1> {{ report.name }} </h1>
+
+<span>Дисциплина</span>
+<select title="Дисциплина">
+    <option value="Системное программирование">Системное программирование</option>
+    <option value="Трансляторы">Трансляторы</option>
+</select>
+
+<span>Семместр</span>
+<select title="Семместр">
+    <option value="1">1</option>
+    <option value="2">2</option>
+</select>
+
+<div id="reports-body">
+    <table border="1" id="tab_customers">
+        <thead>
+            <tr class='warning'>
+
+                <th rowspan="4">№</th>
+                <th rowspan="4">
+                    Фамилия и инициалы студентов группы
+                    <select title="Группы">
+                        <option value="923">923</option>
+                        <option value="934">934</option>
+                    </select>
+                </th>
+                <th colspan="18">
+                    Даты и виды учебных занятий, их посещение, контрольные сроки
+                </th>
+
+            </tr>
+            <tr>
+                <th style="height: 40px" rowspan="1"
+                    ng-repeat="n in [].constructor(18) track by $index">  </th>
+            </tr>
+            <tr>
+                <th style="height: 20px" rowspan="1" ng-repeat="n in [].constructor(18) track by $index"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in report.data">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td ng-repeat="n in [].constructor(18) track by $index">  </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,21 +1,21 @@
 'use strict';
 
-app.controller('reportCtrl', ['$scope', '$routeParams', '$http', 'reportsFactory',
-    function ($scope, $routeParams, $http, reportsFactory) {
+app.controller('reportCtrl', ['$scope', '$state', '$routeParams', '$stateParams', '$http', 'reportsFactory',
+    function ($scope, $state, $routeParams, $stateParams, $http, reportsFactory) {
 
     $http({
         method: 'GET',
         url: 'https://teacher-journal2.herokuapp.com/students.json'
     }).then(function successCallback(response) {
 
-        console.log('r', response);
-        let reportId = Number($routeParams.reportId);
+        let reportId = $state.current.name;
 
         $scope.report = new Report(
             reportId,
             _.find(reportsFactory, {id: reportId}).name,
             response.data
         );
+
 
         console.log("RA", $scope.report);
 
@@ -34,7 +34,7 @@ app.controller('reportCtrl', ['$scope', '$routeParams', '$http', 'reportsFactory
         let pdf = new jsPDF('p', 'pt', 'letter');
         // source can be HTML-formatted string, or a reference
         // to an actual DOM element from which the text will be scraped.
-        let source = $('#customers')[0];
+        let source = $('#reports-body')[0];
 
         console.log("source", source);
 
@@ -55,6 +55,9 @@ app.controller('reportCtrl', ['$scope', '$routeParams', '$http', 'reportsFactory
             left: 40,
             width: 700
         };
+
+        alert("!");
+
         // all coords and widths are in jsPDF instance's declared units
         // 'inches' in this case
         pdf.fromHTML(
@@ -64,8 +67,10 @@ app.controller('reportCtrl', ['$scope', '$routeParams', '$http', 'reportsFactory
                 'width': margins.width, // max width of content on PDF
                 'elementHandlers': specialElementHandlers
             },
-
             function (dispose) {
+
+                alert("!");
+
                 // dispose: object with X, Y of the last line add to the PDF
                 //          this allow the insertion of new lines after html
                 pdf.save('Test.pdf');

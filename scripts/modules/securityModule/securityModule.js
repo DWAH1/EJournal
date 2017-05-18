@@ -1,7 +1,11 @@
 angular.module('securityModule', ['authorizationModule'])
     .factory('$pagesSecurityService', ['$userProvider', '$location',
         function ($userProvider, $location) {
+
             var checkAuthorize = function(path) {
+
+                console.log($userProvider.getUser());
+
                 if ($userProvider.getUser() == null) {
                     return $location.path('/login');
                 }
@@ -32,6 +36,7 @@ angular.module('securityModule', ['authorizationModule'])
                         break;
                     }
                 }
+
                 return authorize;
             };
 

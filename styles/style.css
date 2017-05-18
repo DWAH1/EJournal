@@ -11,3 +11,25 @@
     margin-right: 30px;
     width: 20px;
 }
+
+#reports-body {
+    margin: 30px;
+}
+
+select {
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+
+table {
+    empty-cells: show;
+    border: 1px solid #000;
+}
+
+table td,
+table th {
+    min-width: 2em;
+    min-height: 2em;
+    border: 1px solid #000;
+}

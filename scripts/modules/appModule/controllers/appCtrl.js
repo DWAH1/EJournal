@@ -1,33 +1,7 @@
-app.controller('appCtrl', ['$scope', '$cookies', '$cookieStore', '$location', '$pagesSecurityService',
+app.controller('appCtrl', ['$scope', '$cookies', '$location', '$pagesSecurityService',
     '$userProvider', 'authorizationFactory',
-    function($scope, $cookies, $cookieStore, $location, $pagesSecurityService,
+    function($scope, $cookies, $location, $pagesSecurityService,
              $userProvider, authorizationFactory){
-
-        // console.log(_.find([{name: "Кач", id: 2}, ], {id: 2}));
-        // let userCookies = {login: 'user1', pass: '123456'};
-        // // $cookies.dotobject = someSessionObj;
-        // $cookieStore.put('user', userCookies);
-        // console.log($cookies.getObject('user').login);
-
-        // let time = new Date();
-        // now.setMinutes(now.getMinutes() + 1);
-        // let timeShift = now.setMinutes(now.getMinutes() + 20);
-        // console.log(timeShift);
-        // $cookies.put("test", "testText", {expires: timeShift});
-
-        // var now = new Date();
-        // now.setMinutes(now.getMinutes() + 30);
-        // console.log( now );
-        // console.log( now.setMinutes(now.getMinutes() + 30) );
-        //
-        // var now = new Date();
-        // now.setMinutes(now.getMinutes() + 1);
-        // $cookies.put("test", "testText", {expires: now);
-        // // alert("!");
-        // console.log($cookies.get("test"));
-
-        // $cookies.remove('user');
-
 
         // for use inline of views
         $scope.goTo = function(path){
@@ -63,7 +37,7 @@ app.controller('appCtrl', ['$scope', '$cookies', '$cookieStore', '$location', '$
                 $location.path(prevUrl.split('#')[1]);
             }
 
-            if ($location.path() == '/redirect') {
+            if ($location.path() == '/otherwise') {
                 $location.path( $scope.history[$scope.history.length - 2] );
             }
 
