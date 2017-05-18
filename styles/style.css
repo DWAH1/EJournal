@@ -1,0 +1,13 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
+.greeting {
+    margin-bottom: 30px;
+}
+
+.authorization label {
+    display: inline-block;
+    margin-right: 30px;
+    width: 20px;
+}

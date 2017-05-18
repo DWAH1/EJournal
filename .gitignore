@@ -1,6 +1,5 @@
 # WEBSTORM
-.idea/
+/.idea/
 
 #BOWER
-bower_components/
-app/res/
+/bower_components/

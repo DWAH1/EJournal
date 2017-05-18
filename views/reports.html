@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<div>
+
+  <span class="greeting"> Hello, <b>{{getUser().Login}}</b>! </span>
+
+  <div>
+    Reports list
+    <div ng-repeat="post in reports">
+      <a href="#/reports/{{ post.id }}">{{post.name}}</a>
+    </div>
+  </div>
+
+  <button ng-click="goTo('/settings')">Settings</button>
+  <button ng-click="logOutClick()">Exit</button>
+
+</div>
