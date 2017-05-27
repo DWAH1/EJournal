@@ -33,3 +33,7 @@ table th {
     min-height: 2em;
     border: 1px solid #000;
 }
+
+td:hover {
+    background-color: coral;
+}
