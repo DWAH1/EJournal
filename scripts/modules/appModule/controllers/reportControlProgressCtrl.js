@@ -8,6 +8,7 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$routeParams',
     let report = new StudyLoadReport(title, $http, $scope);
 
 
+
     $scope.chooseGroup = function (group) {
     };
 
@@ -20,5 +21,7 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$routeParams',
     };
 
 }]);
+
+
 
 
