@@ -12,6 +12,8 @@ app.controller('reportsCtrl', ['$scope', '$location', '$userProvider', 'authoriz
 
 app.factory('reportsFactory', function () {
 
+    // let
+
     let typeReportEnum = {
         TrainingLoad: 0,
         AccountingStudentWork: 1,

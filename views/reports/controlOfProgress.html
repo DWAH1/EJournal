@@ -5,11 +5,15 @@
 
 <hr>
 
-<h1> {{ title }} </h1>
+<h1> {{ report.title }} </h1>
+
+<!--{{report}}-->
+
+<button ng-click="changeReport()">Change</button>
 
 <span>Дисциплина</span>
 <select title="Дисциплина">
-    <option ng-repeat="subject in subjects" value="{{ subject.id }}">{{ subject.name }}</option>
+    <option ng-repeat="subject in report.subjects" value="{{ subject.id }}">{{ subject.name }}</option>
 </select>
 
 <span>Семместр</span>
@@ -27,7 +31,7 @@
                 <th rowspan="4">
                     Фамилия и инициалы студентов группы
                     <select title="Группы">
-                        <option ng-repeat="group in groups" value="{{group.id}}">{{group.number}}</option>
+                        <option ng-repeat="group in report.groups" value="{{group.id}}">{{group.number}}</option>
                     </select>
                 </th>
                 <th colspan="18">
@@ -44,7 +48,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="student in students">
+            <tr ng-repeat="student in report.students">
                 <td>{{ student.id }}</td>
                 <td>{{ student.name }}</td>
                 <td ng-repeat="n in [].constructor(18) track by $index">  </td>

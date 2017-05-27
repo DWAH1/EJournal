@@ -1,48 +1,52 @@
 class Report {
 
-    constructor(name, $http, $scope) {
-        $scope.title = this.title = name;
+    constructor(title) {
 
-        Report.getSubjects($http, $scope);
-        Report.getGroups($http, $scope);
-        Report.getStudents($http, $scope);
+        this.title = title;
+
+        this.groups = null;
+        this.subjects = null;
+        this.students = null;
     }
 
-    static getSubjects($http, $scope) {
+    set setGroups(data) {
+        this.groups = data;
+    }
 
-        $http({
+    set setSubjects(data) {
+        this.subjects = data;
+    }
+
+    set setStudents(data) {
+        this.students = data;
+    }
+
+    getGroups($http) {
+        return $http({
             method: 'GET',
-            url: 'https://teacher-journal2.herokuapp.com/subjects.json'
+            url: API.urls().groups
         }).then(function successCallback(response) {
-            $scope.subjects = response.data;
+            return response.data;
         });
-
-
     }
 
-    static getGroups($http, $scope) {
-
-        $http({
+    getSubjects($http) {
+        return $http({
             method: 'GET',
-            url: 'https://teacher-journal2.herokuapp.com/groups.json'
+            url: API.urls().subjects
         }).then(function successCallback(response) {
-            $scope.groups = response.data;
+            return response.data;
         });
-
     }
 
-    static getStudents($http, $scope) {
-
-        $http({
+    getStudents($http) {
+        return $http({
             method: 'GET',
-            url: 'https://teacher-journal2.herokuapp.com/students.json'
+            url: API.urls().students
         }).then(function successCallback(response) {
-            $scope.students = response.data;
+            return response.data;
         });
-
     }
-
-    render() {}
 
     download() {}
 
