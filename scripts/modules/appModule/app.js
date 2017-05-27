@@ -32,23 +32,23 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('report1', {
-            url: '/report1',
+        .state('controlProgress', {
+            url: '/controlProgress',
             parent: 'reports',
             views: {
                 'bookDetails@reports': {
-                    templateUrl: 'views/reports/report1.html',
-                    controller: 'reportCtrl'
+                    templateUrl: 'views/reports/controlOfProgress.html',
+                    controller: 'reportControlProgressCtrl'
                 }
             }
         })
-        .state('report2', {
-            url: '/report2',
+        .state('studyLoad', {
+            url: '/studyLoad',
             parent: 'reports',
             views: {
                 'bookDetails@reports': {
-                    templateUrl: 'views/reports/report2.html',
-                    controller: 'reportCtrl'
+                    templateUrl: 'views/reports/studyLoad.html',
+                    controller: 'reportStudyLoadCtrl'
                 }
             }
         })
@@ -57,8 +57,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
             parent: 'reports',
             views: {
                 'bookDetails@reports': {
-                    templateUrl: 'views/reports/report3.html',
-                    controller: 'reportCtrl'
+                    templateUrl: 'views/reports/other.html',
+                    controller: 'reportControlProgressCtrl'
                 }
             }
         })

@@ -3,6 +3,9 @@ app.controller('appCtrl', ['$scope', '$cookies', '$location', '$pagesSecuritySer
     function($scope, $cookies, $location, $pagesSecurityService,
              $userProvider, authorizationFactory){
 
+        // $cookies.remove('user');
+        // alert("HERE");
+
         // for use inline of views
         $scope.goTo = function(path){
             $location.path(path);

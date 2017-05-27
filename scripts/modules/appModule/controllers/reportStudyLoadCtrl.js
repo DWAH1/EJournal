@@ -1,32 +1,32 @@
 'use strict';
 
-app.controller('reportCtrl', ['$scope', '$state', '$routeParams', '$stateParams', '$http', 'reportsFactory',
+app.controller('reportStudyLoadCtrl', ['$scope', '$state', '$routeParams', '$stateParams', '$http',
     function ($scope, $state, $routeParams, $stateParams, $http, reportsFactory) {
 
     $http({
         method: 'GET',
-        url: 'https://teacher-journal2.herokuapp.com/students.json'
+        url: 'https://teacher-journal2.herokuapp.com/subjects.json'
     }).then(function successCallback(response) {
 
-        let reportId = $state.current.name;
-
-        $scope.report = new Report(
-            reportId,
-            _.find(reportsFactory, {id: reportId}).name,
-            response.data
+        $scope.report = new StudyLoadReport(
+            12,
+            "223",
+            response.data,
+            $http
         );
 
-
-        console.log("RA", $scope.report);
-
+        console.log('f', $scope.report);
 
     }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
 
+    $scope.chooseGroup = function (group) {
+        console.log('Ch');
+    };
+
     $scope.printReport = function () {
-        // alert("PRINT");
         window.print();
     };
 
@@ -79,22 +79,17 @@ app.controller('reportCtrl', ['$scope', '$state', '$routeParams', '$stateParams'
 
 }]);
 
-class Report {
 
-    constructor(id, name, data) {
-        this.id = id;
-        this.name = name;
-        this.data = data;
-    }
+app.factory('reportStudyLoadFactory', function ($http) {
 
-    render() {
-        alert("Here is render!");
-        $("table").html("I'm");
-    }
-
-}
-
-
+   //  // let report = {name: "dd", id: 21};
+   //
+   //  console.log("in factory", $http);
+   //  // let report = ;
+   // let report = new StudyLoadReport("1", "2", "33", $http);
+   //
+   //  return report;
+});
 
 
 

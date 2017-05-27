@@ -20,14 +20,14 @@ app.factory('reportsFactory', function () {
 
     return [
         {
-            id: "report1",
+            id: "studyLoad",
             type: typeReportEnum.TrainingLoad,
             name: "Учебная нагрузка"
         },
         {
-            id: "report2",
+            id: "controlProgress",
             type: typeReportEnum.AccountingStudentWork,
-            name: "Посещяемость"
+            name: "Учет работы студентов"
         },
         {
             id: "report3",
