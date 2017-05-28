@@ -2,38 +2,47 @@
     display: none;
 }
 
-.greeting {
-    margin-bottom: 30px;
-}
-
-.authorization label {
-    display: inline-block;
-    margin-right: 30px;
-    width: 20px;
-}
-
-#reports-body {
-    margin: 30px;
-}
-
-select {
-    display: inline-block;
-    margin-bottom: 50px;
-}
-
-
-table {
-    empty-cells: show;
-    border: 1px solid #000;
-}
-
-table td,
-table th {
-    min-width: 2em;
-    min-height: 2em;
-    border: 1px solid #000;
-}
-
 td:hover {
     background-color: coral;
+}
+
+/* login */
+body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+}
+p {font-size: 16px;}
+.margin {margin-bottom: 45px;}
+.bg-1 {
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+}
+.bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+}
+.bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
+}
+.bg-4 {
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+}
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+    color: #1abc9c !important;
 }

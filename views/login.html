@@ -1,17 +1,64 @@
-<div>
-    <h3>Journal E</h3>
-    <span>Please login</span>
-
-    <form class="authorization">
-        <div>
-            <label for="login">Login: </label>
-            <input id="login" placeholder="Login (ex. admin/user)" ng-model="login" />
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a style="cursor: default" class="navbar-brand" href="javascript:">Journal</a>
         </div>
-        <div>
-            <label for="password">Pass: </label>
-            <input id="password" placeholder="Pass (ex. 123456)" type="password" ng-model="pass" />
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="javascript:">WHO</a></li>-->
+                <li><a href="javascript:" ng-click="openAboutPopup()">ABOUT</a></li>
+                <li><a href="javascript:" ng-click="openLoginPopup()">SIGN IN</a></li>
+            </ul>
         </div>
-    </form>
+    </div>
+</nav>
 
-    <button ng-click="loginClick()">Login</button>
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+    <h1 class="margin">Journal</h1>
+    <img src="res/img/title-icon.png" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="250" height="250">
+    <h2>Электронный журнал</h2>
 </div>
+
+<!-- Second Container -->
+<div class="container-fluid bg-2 text-center">
+    <h3 class="margin">What Am I?</h3>
+    <p> Доступ 24/7 к отчетности Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    <a href="javascript:" id='myModal' class="btn btn-default btn-lg" ng-click="openLoginPopup()">
+        <span class="glyphicon glyphicon-log-in"></span> Войти
+    </a>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+    <p> Kasterov S. A. DIIT <br> 2017 </p>
+</footer>
+
+<!-- Popups -->
+<div style="display: none; color: black" id="loginPopup">
+    <div class="text-center">
+        <form class="authorization">
+            <input id="login" placeholder="Login (ex. admin/user)" ng-model="login" />
+            <input id="password" placeholder="Pass (ex. 123456)" type="password" ng-model="pass" />
+            <button style="width: 300px" ng-click="loginClick()">Login</button>
+        </form>
+    </div>
+</div>
+
+<div style="display: none; color: black" id="aboutPopup">
+    <div class="text-center">
+        Journal <br>
+            &copy; Kasterov S. A. <br>
+                DIIT 2017
+    </div>
+</div>
+
+<script>
+
+</script>
