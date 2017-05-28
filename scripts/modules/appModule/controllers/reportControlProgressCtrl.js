@@ -7,8 +7,8 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state',
     // retrieve name of report
     let title = _.find(reportsFactory, {id: $state.current.name}).name;
     // create and init report
-    //(new StudyLoadReport(title)).init($http, $scope);
-    $scope = new StudyLoadReport(title);
+    (new StudyLoadReport(title)).init($http, $scope);
+    // $scope = new StudyLoadReport(title);
 
 
     $scope.changeReport = function () {
