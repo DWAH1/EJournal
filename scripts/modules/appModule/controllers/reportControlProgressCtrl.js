@@ -6,34 +6,18 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state',
 
     // retrieve name of report
     let title = _.find(reportsFactory, {id: $state.current.name}).name;
-    // create
-    (new StudyLoadReport(title)).init($http, $scope);
+    // create and init report
+    //(new StudyLoadReport(title)).init($http, $scope);
+    $scope = new StudyLoadReport(title);
 
-    // report.init($http);
 
-    // start create report
-    // let report = new StudyLoadReport(title);
-    // report.getGroups($http).then(function (res) {
-    //     report.setGroups = res;
-    //
-    //     report.getSubjects($http).then(function (res) {
-    //        report.setSubjects = res;
-    //
-    //        report.getStudents($http).then(function (res) {
-    //           report.setStudents = res;
-    //           console.log("report", report);
-    //
-    //           $scope.report = report; // render report
-    //        });
-    //
-    //     });
-    // });
-    // end create report
     $scope.changeReport = function () {
         $scope.report.students = $scope.report.students.concat([{id: 4, name: "NEW"}]);
     };
 
-
+    $scope.changeSubject = function (id) {
+        $scope.report.changeSubject($http, $scope, id);
+    };
 
     $scope.chooseGroup = function (group) {
     };
@@ -43,7 +27,7 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state',
     };
 
     $scope.downloadReport = function () {
-        report.download();
+        $scope.report.download();
     };
 
 }]);

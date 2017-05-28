@@ -7,13 +7,11 @@
 
 <h1> {{ report.title }} </h1>
 
-<!--{{report}}-->
-
-<button ng-click="changeReport()">Change</button>
 
 <span>Дисциплина</span>
-<select title="Дисциплина">
-    <option ng-repeat="subject in report.subjects" value="{{ subject.id }}">{{ subject.name }}</option>
+<select title="Дисциплина" ng-model="activeSubject" ng-change="changeSubject(activeSubject)"
+        ng-options="subject.id as subject.name for subject in report.subjects">
+    <option value="" disabled>-- Выберите дисциплину --</option>
 </select>
 
 <span>Семместр</span>

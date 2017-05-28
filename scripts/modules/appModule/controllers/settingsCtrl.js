@@ -7,7 +7,7 @@ app.controller('settingsCtrl', ['$scope', '$http', function ($scope, $http) {
 
         let req = {
             method: 'POST',
-            url: 'https://teacher-journal2.herokuapp.com/groups.json',
+            url: API.urls().groups,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -25,11 +25,11 @@ app.controller('settingsCtrl', ['$scope', '$http', function ($scope, $http) {
 
         let req = {
             method: 'POST',
-            url: 'https://teacher-journal2.herokuapp.com/subjects.json',
+            url: API.urls().subjects,
             headers: {
                 'Content-Type': 'application/json, text/plain, */*'
             },
-            params: { subject: {name: subjectName} }
+            params: { name: subjectName }
         };
 
         $http(req).then(function(res) {console.log(res);}, function(res){console.log(res);});
@@ -40,8 +40,6 @@ app.controller('settingsCtrl', ['$scope', '$http', function ($scope, $http) {
 
     };
 
+    //POST   /subjects.json       params: { name }
+
 }]);
-
-class Group {
-
-}
