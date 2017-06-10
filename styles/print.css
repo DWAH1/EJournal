@@ -1,0 +1,17 @@
+@media print {
+    div.tool-box {
+        display: none;
+    }
+    select {
+        font-weight: bold;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: none; /* If you want to remove the border as well */
+        background: none;
+    }
+    select.middle {
+        margin-left: 30px;
+        font-size: 20px;
+    }
+}

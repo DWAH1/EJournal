@@ -41,12 +41,16 @@
 </footer>
 
 <!-- Popups -->
-<div style="display: none; color: black" id="loginPopup">
+<div class="login-popup" style="display: none; color: black" id="loginPopup">
     <div class="text-center">
-        <form class="authorization">
-            <input id="login" placeholder="Login (ex. admin/user)" ng-model="login" />
-            <input id="password" placeholder="Pass (ex. 123456)" type="password" ng-model="pass" />
-            <button style="width: 300px" ng-click="loginClick()">Login</button>
+        <form class="authorization" name="form_authorization">
+            <div>
+                <input id="login" placeholder="Login" type="text" ng-model="login"  ng-required="true"/>
+            </div>
+            <div>
+                <input id="password" placeholder="Password" type="password" ng-model="pass" ng-required="true"/>
+            </div>
+            <button ng-click="loginClick()">Login</button>
         </form>
     </div>
 </div>

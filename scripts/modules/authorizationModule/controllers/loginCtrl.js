@@ -9,6 +9,10 @@ authorizationModule.controller('loginCtrl', ['$scope', 'authorizationFactory', '
 
         $scope.loginClick = function() {
 
+            console.log("ff", $scope.form_authorization);
+            if (!$scope.form_authorization.$valid)
+                return;
+
             if (authorizationFactory.login($scope.login, $scope.pass)) {
                 loginJBox.close();
                 $location.path('/reports');

@@ -46,3 +46,94 @@ p {font-size: 16px;}
 .navbar-nav  li a:hover {
     color: #1abc9c !important;
 }
+
+.login-popup {
+    padding: 30px 0 15px 0;
+}
+    .login-popup button {
+        background: #428BCA;
+        color: #fff;
+        /*font-family: Sans-serif;*/
+        font-size: 20px;
+        height: 60px;
+        width: 83.5%;
+        line-height: 60px;
+        margin: 0 5% 5% 5%;
+        text-align: center;
+        border: 0;
+        transition: all 0.3s ease 0s;
+        border-radius: 0 0 10px 10px;
+        outline: none;
+    }
+        .login-popup button:hover {
+            background: #3071A9;
+        }
+
+    .login-popup input {
+        margin-bottom: 2px;
+        outline: none;
+        border: none;
+        height: 60px;
+        width: 83.5%;
+        transition: all 0.3s ease 0s;
+    }
+    .login-popup input[type="text"] {
+        border-radius: 10px 10px 0 0;
+    }
+    .login-popup input[type="password"] {
+        border-radius: 0 0 0 0;
+    }
+        .login-popup input.ng-valid {
+            background-color: #b3ffe0;
+        }
+
+.tool-box button {
+    background: #428BCA;
+    color: #fff;
+    border: none;
+    width: 140px;
+    margin: 10px 0 0 0;
+    border-radius: 0;
+    outline: none;
+    transition: all 0.3s ease 0s;
+}
+    .tool-box button:first-child {
+        margin: 10px 0 0 10px;
+    }
+
+    .tool-box button:hover {
+       background-color: #1abc9c;
+    }
+
+select {
+    border-radius: 5px;
+    background: #428BCA;
+    color: #fff;
+    /*text-align: center;*/
+    border: 0;
+    transition: all 0.3s ease 0s;
+    outline: none;
+}
+
+select.middle {
+    width: 80px;
+}
+
+select:hover {
+    background-color: #1abc9c;
+    /*text-align: center;*/
+}
+
+table {
+    border-color: black;
+}
+
+th:not(select), td {
+    padding: 2px;
+    text-align: center;
+}
+
+select:disabled {
+    color:red;
+    background: lightgray;
+}
