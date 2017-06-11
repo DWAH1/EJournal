@@ -12,8 +12,6 @@ app.controller('reportsCtrl', ['$scope', '$location', '$userProvider', 'authoriz
 
 app.factory('reportsFactory', function () {
 
-    // let
-
     let typeReportEnum = {
         TrainingLoad: 0,
         AccountingStudentWork: 1,
@@ -23,16 +21,19 @@ app.factory('reportsFactory', function () {
     return [
         {
             id: "studyLoad",
+            imageUrl: "res/img/ss.png",
             type: typeReportEnum.TrainingLoad,
             name: "Учебная нагрузка"
         },
         {
             id: "controlProgress",
+            imageUrl: "res/img/ps.png",
             type: typeReportEnum.AccountingStudentWork,
             name: "Учет работы студентов"
         },
         {
             id: "report3",
+            imageUrl: "res/img/ps.png",
             type: typeReportEnum.Other,
             name: "Другой отчет"
         }

@@ -6,11 +6,48 @@ td:hover {
     background-color: coral;
 }
 
+hr {
+    margin: 0;
+}
+
 /* login */
 body {
     font: 20px Montserrat, sans-serif;
     line-height: 1.8;
     color: #f5f6f7;
+}
+
+select.middle {
+    width: 80px;
+}
+
+select:hover {
+    background-color: #1abc9c;
+    /*text-align: center;*/
+}
+
+table {
+    border-color: black;
+}
+
+th:not(select), td {
+    padding: 2px;
+    text-align: center;
+}
+
+select:disabled {
+    color:red;
+    background: lightgray;
+}
+
+select {
+    border-radius: 5px;
+    background: #428BCA;
+    color: #fff;
+    /*text-align: center;*/
+    border: 0;
+    transition: all 0.3s ease 0s;
+    outline: none;
 }
 
 .row {
@@ -98,48 +135,49 @@ p {font-size: 16px;}
     color: #fff;
     border: none;
     width: 140px;
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
     border-radius: 0;
     outline: none;
     transition: all 0.3s ease 0s;
 }
-    .tool-box button:first-child {
-        margin: 10px 0 0 10px;
-    }
-
     .tool-box button:hover {
        background-color: #1abc9c;
     }
 
-select {
-    border-radius: 5px;
-    background: #428BCA;
-    color: #fff;
-    /*text-align: center;*/
-    border: 0;
-    transition: all 0.3s ease 0s;
-    outline: none;
-}
-
-select.middle {
-    width: 80px;
-}
-
-select:hover {
-    background-color: #1abc9c;
-    /*text-align: center;*/
-}
-
-table {
-    border-color: black;
-}
-
-th:not(select), td {
-    padding: 2px;
+input[readonly] {
+    border: none;
     text-align: center;
 }
 
-select:disabled {
-    color:red;
-    background: lightgray;
+.time-properties * {
+    margin: 0;
+    padding: 0;
 }
+
+.carousel-indicators li {
+    border: 1px solid black;
+}
+.carousel-indicators li.active {
+    background: black;
+}
+
+
+.tool-box {
+    border: 0;
+}
+.tool-box ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.tool-box ul li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    display: inline;
+}
+
+

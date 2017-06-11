@@ -1,20 +1,38 @@
-<div class="tool-box">
-    <button ng-click="goTo('/reports')">
-        <span style="padding-top: 1px" class="glyphicon glyphicon-list"></span> All reports
-    </button>
-    <button ng-click="printReport()">
-        <span class="glyphicon glyphicon-print"></span> Print
-    </button>
-    <button ng-click="downloadReport()">
-        <span class="glyphicon glyphicon-download"></span> Download
-    </button>
+<div class="row" ng-show="!isLoading">
+    <div class="center-block col-md-10" style="float: none;">
+        <div class="tool-box">
+            <ul>
+                <li>
+                    <button ng-click="goTo('/reports')">
+                        <span class="glyphicon glyphicon-list"></span> All reports
+                    </button>
+                </li>
+                <li>
+                    <button ng-click="printReport()">
+                        <span class="glyphicon glyphicon-print"></span> Print
+                    </button>
+                </li>
+                <li>
+                    <button ng-click="downloadReport()">
+                        <span class="glyphicon glyphicon-download"></span> Download
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
-
 <hr>
 
 <div class="row">
+    <div class="vcenter" style="width: 100%; height: 50%;">
+        <div ng-show="isLoading" class="loader">Loading...</div>
+    </div>
+</div>
+
+
+<div class="row" ng-show="!isLoading">
     <div class="center-block col-md-10" style="float: none;">
-        <div class="report-body">
+        <div class="report-head">
             <h1> {{ report.title }} </h1>
 
             <span>Дисциплина</span>
@@ -25,7 +43,7 @@
             </select>
 
             <span>Семместр</span>
-            <select title="Семместр">
+            <select title="Семестр">
                 <option value="1">1</option>
                 <option value="2">2</option>
             </select>

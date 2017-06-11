@@ -1,3 +1,9 @@
-/**
- * Created by ser on 11.05.17.
- */
+app.directive("group", function() {
+    return {
+        restrict : "AECM",
+        template: "<span>{{ number }}</span>",
+        link: function (scope, element, attrs) {
+            scope.number = attrs.number;
+        }
+    }
+});

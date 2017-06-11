@@ -14,4 +14,20 @@
         margin-left: 30px;
         font-size: 20px;
     }
+
+    .report-passport * {
+     font-size: 12px;
+    }
+
+    .report-head, .report-head * {
+        margin: 0;
+        padding: 0;
+    }
+        .report-study-load .report-head h1 {
+            font-size: 15px;
+        }
+        .report-study-load .report-head span, select {
+            font-size: 13px;
+        }
+
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-class StudyLoadReport extends Report {
+class ControlProgress extends Report {
     constructor(name) {
         super(name);
     }
@@ -15,6 +15,7 @@ class StudyLoadReport extends Report {
             report.setSubjects = res;
             // add to scope
             $scope.report = report;
+            $scope.isLoading = false;
         });
     }
 
@@ -41,6 +42,7 @@ class StudyLoadReport extends Report {
                 }
 
                 $scope.report.groups = currentGroups;
+                $scope.isLoading = false;
             });
 
         });

@@ -1,30 +1,119 @@
-<span>Отчет</span>
-<button ng-click="goTo('/reports')">All reports</button>
-<button ng-click="printReport()">Pint</button>
-<button ng-click="downloadReport()">Download</button>
+<div class="row" ng-show="!isLoading">
+    <div class="center-block col-md-10" style="float: none;">
+        <div class="tool-box">
+            <button ng-click="goTo('/reports')">
+                <span style="padding-top: 1px" class="glyphicon glyphicon-list"></span> All reports
+            </button>
+            <button ng-click="printReport()">
+                <span class="glyphicon glyphicon-print"></span> Print
+            </button>
+            <button ng-click="downloadReport()">
+                <span class="glyphicon glyphicon-download"></span> Download
+            </button>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="vcenter" style="width: 100%; height: 50%;">
+        <div ng-show="isLoading" class="loader">Loading...</div>
+    </div>
+</div>
 
-<h1> REP2 </h1>
-<h1> {{ report.name }} </h1>
+<div class="row report-study-load" style="text-align: center" ng-show="!isLoading">
+    <div class="center-block col-md-10" style="float: none;">
+        <div class="report-head">
+            <h1> {{ report.title }} </h1>
 
-<div id="load"></div>
+            <span> Дисциплина </span>
+            <select class="long-select" title="Дисциплина"
+                    ng-model="activeSubject" ng-change="changeSubject(activeSubject)"
+                    ng-options="subject.id as subject.name for subject in report.subjects">
+                <option value="" disabled>-- Выберите дисциплину --</option>
+            </select>
+        </div>
 
-<div id="reports-body">
-    <table id="tab_customers">
-        <colgroup>
-            <!--<col width="20%">-->
-            <!--<col width="20%">-->
-        </colgroup>
-        <thead>
-            <tr class='warning'>
-                <th>id</th>
-                <th>name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="user in report.data">
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="report-passport">
+            <h3 style="text-align: center; margin: 10px"> Выдержа из календарного плана занятий </h3>
+
+            <div class="row" style="text-align: center">
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <span>Семестр</span>
+                    <select title="Семместр" ng-disabled="!activeSubject">
+                        <option ng-repeat="n in range(1, 2)"> {{ n }} </option>
+                    </select>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-2">
+                    <span>Курс</span>
+                    <select title="Курс" ng-disabled="!activeSubject">
+                        <option ng-repeat="n in range(1, 6)"> {{ n }} </option>
+                    </select>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <span>Группы</span>
+                    <group ng-repeat="group in report.groups" number="{{group.number}}"></group>
+                </div>
+            </div>
+
+            <!-- h -->
+            <div class="time-properties">
+                <div class="row" style="text-align: center; margin-top: 5px;">
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavender;">Количество часов</div>
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavenderblush;">
+                        <input type="text" placeholder="часов" ng-readonly="isReadOnly">
+                    </div>
+                    <div class="col-sm-6 col-xs-6" style="background-color:transparent;">Индивидуальные задания</div>
+                </div>
+
+                <div class="row" style="text-align: center; margin-top: 5px;">
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavender;">В том числе: лекций</div>
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavenderblush;">
+                        <input type="text" placeholder="часов" ng-readonly="isReadOnly">
+                    </div>
+                    <div class="col-sm-6 col-xs-6" style="background-color:transparent;">
+                        <input type="text" placeholder="задание" ng-readonly="isReadOnly">
+                    </div>
+                </div>
+
+                <div class="row" style="text-align: center; margin-top: 5px;">
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavender;">Лабаратоных занатий</div>
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavenderblush;">
+                        <input type="text" placeholder="часов" ng-readonly="isReadOnly">
+                    </div>
+                    <div class="col-sm-6 col-xs-6" style="background-color:transparent;"></div>
+                </div>
+
+                <div class="row" style="text-align: center; margin-top: 5px;">
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavender;">Практических</div>
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavenderblush;">
+                        <input type="text" placeholder="часов" ng-readonly="isReadOnly">
+                    </div>
+                    <div class="col-sm-6 col-xs-6" style="background-color:transparent;">Форма семместрового контроля</div>
+                </div>
+
+                <div class="row" style="text-align: center; margin-top: 5px;">
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavender;">Самост-ная работа</div>
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavenderblush;">
+                        <input type="text" placeholder="часов" ng-readonly="isReadOnly">
+                    </div>
+                    <div class="col-sm-6 col-xs-6" style="background-color:transparent;">
+                        <input type="text" placeholder="зачет/экзамен" ng-readonly="isReadOnly">
+                    </div>
+                </div>
+
+                <div class="row" style="text-align: center; margin-top: 5px;">
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavender;">Занятия проводят: лекции</div>
+                    <div class="col-sm-3 col-xs-3" style="background-color:lavenderblush;">
+                        <input type="text" placeholder="преподаватель" ng-readonly="isReadOnly">
+                    </div>
+                    <div class="col-sm-1 col-xs-1" style="background-color:transparent;">групповые</div>
+                    <div class="col-sm-4 col-xs-4" style="background-color:transparent;">
+                        <input type="text" placeholder="преподаватель" ng-readonly="isReadOnly">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </div>
