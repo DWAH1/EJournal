@@ -42,7 +42,7 @@
                 <option value="" disabled>-- Выберите дисциплину --</option>
             </select>
 
-            <span>Семместр</span>
+            <span>Семестр</span>
             <select title="Семестр">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -55,8 +55,8 @@
                 <tr class='warning'>
 
                     <th rowspan="4">№</th>
-                    <th rowspan="4">
-                        Фамилия и инициалы студентов группы
+                    <th rowspan="4" style="width: 30%">
+                        <span class="print-mini"> Фамилия и инициалы студентов группы </span>
                         <select title="Группы" class="middle"
                                 ng-disabled="!activeSubject">
                             <option ng-repeat="group in report.groups" value="{{group.id}}">{{group.number}}</option>

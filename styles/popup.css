@@ -1,0 +1,17 @@
+#jBoxSuccess .jBox-container {
+    background-color: #1abc9c;
+}
+
+#successPopup {
+    background-color: #1abc9c;
+    color: black;
+}
+
+#jBoxFailure .jBox-container {
+    background-color: #f48686;
+}
+
+#failurePopup {
+    background-color: #f48686;
+    color: black;
+}

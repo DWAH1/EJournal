@@ -180,4 +180,12 @@ input[readonly] {
     display: inline;
 }
 
+.tool-box.settings button {
+    margin: 0;
+}
+
+.tool-box.settings input {
+    width: 100%;
+}
+
 

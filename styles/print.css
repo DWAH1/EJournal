@@ -15,6 +15,10 @@
         font-size: 20px;
     }
 
+    .print-mini {
+       font-size: 13px;
+    }
+
     .report-passport * {
      font-size: 12px;
     }
@@ -26,7 +30,8 @@
         .report-study-load .report-head h1 {
             font-size: 15px;
         }
-        .report-study-load .report-head span, select {
+        .report-study-load .report-head span,
+        .report-study-load .report-head select {
             font-size: 13px;
         }
 

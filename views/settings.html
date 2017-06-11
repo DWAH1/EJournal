@@ -1,21 +1,113 @@
-<div>
-    <div>Settings.</div>
-    <div>Only superuser can see this.</div>
+<!-- style popup -->
 
-    <form name="groupCreate">
-        <input type="text" ng-model="groupNumber" placeholder="Group number" ng-required="true">
-        <input type="text" ng-model="groupFaculty" placeholder="Faculty number" ng-required="true">
-        <button ng-click="createGroup(groupNumber, groupFaculty)">Add new Group</button>
-    </form>
+<!-- -->
 
-    <br>
+<!-- menu -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:">
+                <span class="glyphicon glyphicon-user"></span> {{ getUser().Login | uppercase }}
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li> <!--<a href="javascript:" ng-click="goTo('/reports')">REPORTS</a> -->
+                    <div class="dropdown">
+                        <button class="dropbtn" ng-click="goTo('/reports')">REPORTS</button>
+                        <div class="dropdown-content">
+                            <a ng-repeat="report in reports" ui-sref="{{report.id}}">{{report.name}}</a>
+                        </div>
+                    </div>
+                </li>
+                <li> <!-- <a href="javascript:" ng-click="goTo('/settings')">SETTINGS</a> -->
+                    <div class="dropdown">
+                        <button class="dropbtn" ng-click="goTo('/settings')">SETTINGS</button>
+                    </div>
+                </li>
+                <li> <!-- <a href="javascript:" ng-click="logOutClick()">EXIT</a> -->
+                    <div class="dropdown">
+                        <button style="background: #f48686" class="dropbtn exit" ng-click="logOutClick()">EXIT</button>
+                    </div>
+                </li>
+            </ul>
 
-    <form name="subjectCreate">
-        <input type="text" ng-model="subjectName" placeholder="Subject name" ng-required="true">
-        <button ng-click="createSubject(subjectName)">Add new Group</button>
-    </form>
+        </div>
+    </div>
+</nav>
 
-    <br>
+<!-- /menu -->
 
-    <button ng-click="goTo('/reports')">To reports</button>
+<!-- loader -->
+<div class="row">
+    <div class="vcenter" style="width: 100%; height: 50%;">
+        <div ng-show="isLoading" class="loader">Loading...</div>
+    </div>
 </div>
+<!-- /loader -->
+
+<!-- content -->
+<div class="row" ng-show="!isLoading">
+    <div class="center-block col-md-9" style="float: none; text-align: center">
+        <h1 style="text-align: left; color: #2f2f2f"> Settings </h1>
+        <hr>
+        <div class="tool-box settings" style="color: black">
+
+            <div class="row" style="text-align: center; margin-top: 20px;">
+                <form name="groupCreate">
+                    <div class="col-sm-4 col-xs-4" style="background-color:lavender;">
+                        <input style="height: 38px" type="text" ng-model="groupNumber" placeholder="Group number" ng-required="true">
+                    </div>
+
+                    <div class="col-sm-4 col-xs-4" style="background-color:lavenderblush;">
+                        <input style="height: 38px" type="text" ng-model="groupFaculty" placeholder="Faculty number" ng-required="true">
+                    </div>
+
+                    <div class="col-sm-4 col-xs-4" style="background-color:transparent;">
+                        <button style="width: 100%" ng-click="createGroup(groupNumber, groupFaculty)">Add new Group</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row" style="text-align: center; margin-top: 20px;">
+                <form name="subjectCreate">
+                    <div class="col-sm-8 col-xs-8" style="background-color:lavender;">
+                        <input style="width: 100%" type="text" ng-model="subjectName" placeholder="Subject name" ng-required="true">
+                    </div>
+                    <div class="col-sm-4 col-xs-4">
+                        <button style="width: 100%" ng-click="createSubject(subjectName)">Add new Subject</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row" style="margin-top: 20px">
+                <button style="width: 50%" ng-click="goTo('/reports')">To reports</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /content -->
+
+<!-- popups -->
+    <!-- popup-success -->
+        <div class="success-popup" style="display: none" id="successPopup">
+            <div class="text-center">
+                Success
+            </div>
+        </div>
+    <!-- /popup-success -->
+
+    <!-- popup-failure -->
+        <div class="failure-popup" style="display: none" id="failurePopup">
+            <div class="text-center">
+                Fail
+            </div>
+        </div>
+    <!-- /popup-failure -->
+<!--/popup-->
