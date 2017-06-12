@@ -7,18 +7,32 @@ authorizationModule.controller('loginCtrl', ['$scope', 'authorizationFactory', '
             content: $('#loginPopup')
         });
 
+        $scope.isLoading = false;
+
         $scope.loginClick = function() {
 
-            console.log("ff", $scope.form_authorization);
             if (!$scope.form_authorization.$valid)
                 return;
 
-            if (authorizationFactory.login($scope.login, $scope.pass)) {
-                loginJBox.close();
-                $location.path('/reports');
-            } else {
-                alert('Access denied!');
-            }
+            $scope.isLoading = true;
+
+            authorizationFactory.login($scope.login, $scope.pass).then(function (isAuth) {
+                if (isAuth) {
+                    alert("!" + isAuth);
+                    loginJBox.close();
+                    $location.path('/reports');
+                } else {
+                    $scope.isLoading = false;
+                    // alert("Access denied!");
+                }
+            });
+
+            // if (authorizationFactory.login($scope.login, $scope.pass)) {
+            //     loginJBox.close();
+            //     $location.path('/reports');
+            // } else {
+            //     alert('Access denied!');
+            // }
         };
 
         $scope.openLoginPopup = function () {

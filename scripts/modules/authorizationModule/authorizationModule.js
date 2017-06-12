@@ -1,30 +1,63 @@
 let authorizationModule = angular.module('authorizationModule', []);
 
-authorizationModule.factory('authorizationFactory',['$userProvider', '$cookies',
-    function($userProvider, $cookies) {
+authorizationModule.factory('authorizationFactory',['$userProvider', '$cookies', '$http',
+    function($userProvider, $cookies, $http) {
         let login = function(login, pass) {
+            return $http.post(API.urls().sign_in,
+                {login: login, password: pass},
+                {headers: {'Content-Type': 'text/plain'}}).then( function(res) {
+
+                    console.log("authSuccess >", res);
+
+                    if (login === 'admin') {
+                        $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.Admin]});
+                    } else {
+                        $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.User, $userProvider.rolesEnum.Other]});
+                    }
+
+                    let timeExpires = new Date();
+                    timeExpires.setMinutes(timeExpires.getMinutes() + 20);
+                    $cookies.putObject('user', {login: login, pass: pass, role: $userProvider.getUserRole()}, {expires: timeExpires});
+
+                    return true;
+                }, // success
+                function(res) {
+                    console.log("authFailure >", res);
+
+                    // will be delete
+                    if (login === 'admin') {
+                        $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.Admin]});
+                    } else {
+                        $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.User, $userProvider.rolesEnum.Other]});
+                    }
+
+                    let timeExpires = new Date();
+                    timeExpires.setMinutes(timeExpires.getMinutes() + 20);
+                    $cookies.putObject('user', {login: login, pass: pass, role: $userProvider.getUserRole()}, {expires: timeExpires});
+
+                    return true; // false
+                } // error
+            );
 
             // check
-            if (!login || login.length < 3) {
-                return false
-            } else if (pass !== '1') {
-                return false;
-            }
+            // if (!login || login.length < 3) {
+            //     return false
+            // } else if (pass !== '1') {
+            //     return false;
+            // }
 
-            // let userRole = login === 'admin' ?
-            //     $userProvider.rolesEnum.Admin :
-
-            if (login === 'admin') {
-                $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.Admin]});
-            } else {
-                $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.User, $userProvider.rolesEnum.Other]});
-            }
-
-            let timeExpires = new Date();
-            timeExpires.setMinutes(timeExpires.getMinutes() + 20);
-            $cookies.putObject('user', {login: login, pass: pass, role: $userProvider.getUserRole()}, {expires: timeExpires});
-
-            return true;
+            // old
+            // if (login === 'admin') {
+            //     $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.Admin]});
+            // } else {
+            //     $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.User, $userProvider.rolesEnum.Other]});
+            // }
+            //
+            // let timeExpires = new Date();
+            // timeExpires.setMinutes(timeExpires.getMinutes() + 20);
+            // $cookies.putObject('user', {login: login, pass: pass, role: $userProvider.getUserRole()}, {expires: timeExpires});
+            //
+            // return true;
         };
 
         let logOut = function () {

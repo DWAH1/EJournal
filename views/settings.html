@@ -85,6 +85,20 @@
                 </form>
             </div>
 
+            <div class="row" style="text-align: center; margin-top: 20px;">
+                <form name="signIn">
+                    <div class="col-sm-4 col-xs-4" style="background-color:lavender;">
+                        <input style="width: 100%" type="text" ng-model="login" placeholder="Login">
+                    </div>
+                    <div class="col-sm-4 col-xs-4" style="background-color:lavender;">
+                        <input style="width: 100%" type="text" ng-model="password" placeholder="Password">
+                    </div>
+                    <div class="col-sm-4 col-xs-4">
+                        <button style="width: 100%" ng-click="authsignIn(login, password)">Add new Subject</button>
+                    </div>
+                </form>
+            </div>
+
             <div class="row" style="margin-top: 20px">
                 <button style="width: 50%" ng-click="goTo('/reports')">To reports</button>
             </div>
@@ -93,21 +107,3 @@
     </div>
 </div>
 <!-- /content -->
-
-<!-- popups -->
-    <!-- popup-success -->
-        <div class="success-popup" style="display: none" id="successPopup">
-            <div class="text-center">
-                Success
-            </div>
-        </div>
-    <!-- /popup-success -->
-
-    <!-- popup-failure -->
-        <div class="failure-popup" style="display: none" id="failurePopup">
-            <div class="text-center">
-                Fail
-            </div>
-        </div>
-    <!-- /popup-failure -->
-<!--/popup-->

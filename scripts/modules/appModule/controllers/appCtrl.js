@@ -6,6 +6,13 @@ app.controller('appCtrl', ['$scope', '$cookies', '$location', '$pagesSecuritySer
         // $cookies.remove('user');
         // alert("HERE");
 
+        let failureJBox = new jBox('Modal', {
+            id: "jBoxFailure",
+            width: 400,
+            animation: 'pulse',
+            content: $('#failurePopup')
+        });
+
         // for use inline of views
         $scope.goTo = function(path){
             $location.path(path);
@@ -33,7 +40,7 @@ app.controller('appCtrl', ['$scope', '$cookies', '$location', '$pagesSecuritySer
 
             if ($location.path() != '/login' || nextUrl.indexOf('login') == -1) {
                 if (!$pagesSecurityService.checkAuthorize($location.path())) {
-                    alert('Access denied!');
+                    failureJBox.setContent("Access denied!").open();
                     $location.path(prevUrl.split('#')[1]);
                 }
             } else if ($location.path() == '/login' && $userProvider.getUser()) { // already authorized

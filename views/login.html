@@ -43,7 +43,7 @@
 <!-- Popups -->
 <div class="login-popup" style="display: none; color: black" id="loginPopup">
     <div class="text-center">
-        <form class="authorization" name="form_authorization">
+        <form class="authorization" name="form_authorization" ng-show="!isLoading">
             <div>
                 <input id="login" placeholder="Login" type="text" ng-model="login"  ng-required="true"/>
             </div>
@@ -52,6 +52,13 @@
             </div>
             <button ng-click="loginClick()">Login</button>
         </form>
+
+        <div class="row">
+            <div class="vcenter" style="width: 100%; height: 50%;">
+                <div ng-show="isLoading" class="loader">Loading...</div>
+            </div>
+        </div>
+
     </div>
 </div>
 
