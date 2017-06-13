@@ -1,10 +1,14 @@
 'use strict';
 
 app.controller('reportStudyLoadCtrl', ['$scope', '$state', '$routeParams',
-    '$stateParams', '$http', 'reportsFactory',
-    function ($scope, $state, $routeParams, $stateParams, $http, reportsFactory) {
+    '$stateParams', '$http', 'reportsFactory', '$userProvider',
+    function ($scope, $state, $routeParams, $stateParams, $http, reportsFactory, $userProvider) {
 
-    $scope.isReadOnly = true;
+    console.log($userProvider.getUserRole());
+    // console.log($userProvider.getUserRole().indexOf(0) != -1 ? true : false);
+
+
+    $scope.isReadOnly = $userProvider.getUserRole().indexOf(0) != -1 ? false : true;
     $scope.isLoading = true;
 
     // retrieve name of report

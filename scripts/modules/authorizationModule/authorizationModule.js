@@ -25,17 +25,24 @@ authorizationModule.factory('authorizationFactory',['$userProvider', '$cookies',
                     console.log("authFailure >", res);
 
                     // will be delete
-                    // if (login === 'admin') {
-                    //     $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.Admin]});
-                    // } else {
-                    //     $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.User, $userProvider.rolesEnum.Other]});
-                    // }
-                    //
-                    // let timeExpires = new Date();
-                    // timeExpires.setMinutes(timeExpires.getMinutes() + 20);
-                    // $cookies.putObject('user', {login: login, pass: pass, role: $userProvider.getUserRole()}, {expires: timeExpires});
+                    if (login === 'admin') {
+                        $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.Admin]});
+                    } else {
+                        $userProvider.setUser({Login: login, Roles: [$userProvider.rolesEnum.User, $userProvider.rolesEnum.Other]});
+                    }
 
-                    return false; // false
+                    let timeExpires = new Date();
+                    timeExpires.setMinutes(timeExpires.getMinutes() + 20);
+                    $cookies.putObject('user', {login: login, pass: pass, role: $userProvider.getUserRole()}, {expires: timeExpires});
+
+                    if (!login || login.length < 3) {
+                        return false
+                    }
+                    if (pass !== '1') {
+                        return false;
+                    }
+
+                    return true; // false
                 } // error
             );
 

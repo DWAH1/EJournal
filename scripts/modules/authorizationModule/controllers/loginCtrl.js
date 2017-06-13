@@ -17,6 +17,12 @@ authorizationModule.controller('loginCtrl', ['$scope', 'authorizationFactory', '
             }
         });
 
+        let aboutJBox = new jBox('Modal', {
+            width: 400,
+            animation: 'pulse',
+            content: $('#aboutPopup')
+        });
+
         $scope.isLoading = false;
 
         $scope.loginClick = function() {
@@ -28,14 +34,17 @@ authorizationModule.controller('loginCtrl', ['$scope', 'authorizationFactory', '
 
             authorizationFactory.login($scope.login, $scope.pass).then(function (isAuth) {
                 if (isAuth) {
+
                     loginJBox.close();
+                    loginJBox.destroy();
+                    aboutJBox.destroy();
+
                     $location.path('/reports');
                 } else {
-                    $scope.isLoading = false;
                     $("#loginPopup input").val("");
                     $("#jBoxlogin").addClass("error");
-                    $(".authorization").append("<span class='message'>Unauthorized</span>")
-                    // alert("Access denied!");
+                    $(".authorization").append("<span class='message'>Unauthorized</span>");
+                    $scope.isLoading = false;
                 }
             });
 
@@ -46,13 +55,6 @@ authorizationModule.controller('loginCtrl', ['$scope', 'authorizationFactory', '
         };
 
         $scope.openAboutPopup = function () {
-
-            let aboutJBox = new jBox('Modal', {
-                width: 400,
-                animation: 'pulse',
-                content: $('#aboutPopup')
-            });
-
             aboutJBox.open();
         };
 

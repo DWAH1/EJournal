@@ -2,9 +2,17 @@
     display: none;
 }
 
-td:hover {
-    background-color: coral;
+/* Change the white to any color ;) */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #b3ffe0 inset !important;
 }
+
+td {
+    transition: all 0.3s ease 0s;
+}
+    td:hover {
+        background-color: #1abc9c;
+    }
 
 hr {
     margin: 0;
@@ -150,7 +158,7 @@ input[readonly] {
 }
 
 .time-properties * {
-    margin: 0;
+    margin: 0 !important;
     padding: 0;
 }
 
@@ -195,5 +203,17 @@ input[readonly] {
 .message {
     color: white;
 }
+
+.time-properties input {
+    height: 30px;
+    width: 80%;
+}
+
+input:read-only{
+    border: none;
+    background-color: lavenderblush;
+}
+
+
 
 
