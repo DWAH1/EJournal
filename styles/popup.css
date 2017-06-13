@@ -15,3 +15,14 @@
     background-color: #f48686;
     color: black;
 }
+
+#jBoxlogin {
+    transition: all 0.3s ease 0s;
+}
+#jBoxlogin.error .jBox-container {
+    background-color: #f48686;
+}
+
+/*#loginPopup.error {*/
+    /*background-color: #f48686;*/
+/*}*/

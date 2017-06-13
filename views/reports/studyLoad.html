@@ -115,5 +115,59 @@
 
         </div>
 
+        <div class="report-passport control">
+            <h3 style="text-align: center; margin: 10px"> Контроль самостоятельной работы студентов </h3>
+
+            <table border="1" id="tab_control" style="width: 100%; font-size: 15px; margin-bottom: 10px">
+                <thead>
+                    <tr class='warning'>
+
+                        <th style="width: 5%;">№з/п</th>
+                        <th style="width: 55%">Суть задания</th>
+                        <th style="width: 10%;">Шифр задания</th>
+                        <th style="width: 10%">Кол-во балов</th>
+                        <th style="width: 20%">Носитель информации</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="n in [].constructor(6) track by $index">
+                        <td style="height: 20px" ng-repeat="n in [].constructor(5) track by $index"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="report-passport report_load">
+            <h3 style="text-align: center; margin: 15px">Учет выполнение учебной нагрузки по её видам и формам занятий</h3>
+
+            <table border="1" id="tab_report_load" style="width: 100%; font-size: 15px; margin-bottom: 10px">
+                <thead>
+                    <tr class='warning'>
+                        <th rowspan="2">Дата</th>
+                        <th rowspan="2">№ Группы</th>
+                        <th style="width: 50%" colspan="10">Количество часов</th>
+                        <th rowspan="2">Содержание занятия</th>
+                        <th rowspan="2">Примечание</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 25px; font-weight: 400" ng-repeat="n in [].constructor(10) track by $index">
+                            {{ $index == 0 ? "Л" : $index == 1 ? "ЛЗ" : "ПЗ"}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="n in [].constructor(6) track by $index">
+                    <td rowspan="1" style="height: 20px" ng-repeat="n in [].constructor(14) track by $index"></td>
+                </tr>
+                <!--<tr ng-repeat="n in [].constructor(6) track by $index">-->
+                    <!--<td style="height: 15px" ng-repeat="n in [].constructor(5) track by $index"></td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+
+        </div>
+
     </div>
 </div>

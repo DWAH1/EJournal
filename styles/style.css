@@ -188,4 +188,12 @@ input[readonly] {
     width: 100%;
 }
 
+.warning th {
+    font-size: 15px;
+}
+
+.message {
+    color: white;
+}
+
 

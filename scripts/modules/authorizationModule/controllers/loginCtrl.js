@@ -2,9 +2,19 @@ authorizationModule.controller('loginCtrl', ['$scope', 'authorizationFactory', '
     function($scope, authorizationFactory, $location) {
 
         let loginJBox = new jBox('Modal', {
+            id: "jBoxlogin",
             width: 400,
             animation: 'pulse',
-            content: $('#loginPopup')
+            content: $('#loginPopup'),
+            onClose: function () {
+                if ($("#jBoxlogin").hasClass("error")) {
+                    $("#jBoxlogin").removeClass("error");
+                }
+                if ($("#jBoxlogin .message").length) {
+                    $("#jBoxlogin .message").remove();
+                }
+                $("#loginPopup input").val("");
+            }
         });
 
         $scope.isLoading = false;
@@ -18,21 +28,17 @@ authorizationModule.controller('loginCtrl', ['$scope', 'authorizationFactory', '
 
             authorizationFactory.login($scope.login, $scope.pass).then(function (isAuth) {
                 if (isAuth) {
-                    alert("!" + isAuth);
                     loginJBox.close();
                     $location.path('/reports');
                 } else {
                     $scope.isLoading = false;
+                    $("#loginPopup input").val("");
+                    $("#jBoxlogin").addClass("error");
+                    $(".authorization").append("<span class='message'>Unauthorized</span>")
                     // alert("Access denied!");
                 }
             });
 
-            // if (authorizationFactory.login($scope.login, $scope.pass)) {
-            //     loginJBox.close();
-            //     $location.path('/reports');
-            // } else {
-            //     alert('Access denied!');
-            // }
         };
 
         $scope.openLoginPopup = function () {
@@ -49,5 +55,10 @@ authorizationModule.controller('loginCtrl', ['$scope', 'authorizationFactory', '
 
             aboutJBox.open();
         };
+
+        $(document).on("input", "#loginPopup input", function () {
+           $("#jBoxlogin").removeClass("error");
+           $("#jBoxlogin .message").remove();
+        });
 
 }]);
