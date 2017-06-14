@@ -42,16 +42,16 @@ class ControlProgress extends Report {
                     name: "Student7"
                 },
                 {
-                    id: 1,
-                    name: "Student1"
+                    id: 8,
+                    name: "Student8"
                 },
                 {
-                    id: 2,
-                    name: "Student2"
+                    id: 9,
+                    name: "Student9"
                 },
                 {
-                    id: 3,
-                    name: "Student3"
+                    id: 10,
+                    name: "Student10"
                 }
             ];
 

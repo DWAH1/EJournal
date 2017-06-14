@@ -60,7 +60,7 @@
                 <tr class='warning'>
 
                     <th rowspan="4">№</th>
-                    <th rowspan="4" style="width: 30%">
+                    <th rowspan="4" style="width: 25%">
                         <span class="print-mini"> Фамилия и инициалы студентов группы </span>
                         <select title="Группы" class="middle"
                                 ng-disabled="!activeSubject">
@@ -73,12 +73,14 @@
 
                 </tr>
                 <tr>
-                    <th style="height: 40px" rowspan="1"
-                        ng-repeat="n in [].constructor(18) track by $index">  </th>
+                    <th style="height: 40px; width: 60px; overflow: hidden"
+                        rowspan="1" class="report-date" data-id="{{$index}}"
+                        ng-repeat="n in [].constructor(18) track by $index">
+                    </th>
                 </tr>
                 <tr>
-                    <th style="height: 20px; font-size: 12px; font-weight: 400" rowspan="1" ng-repeat="n in [].constructor(18) track by $index">
-                        {{ $index == 0 ? "Л&#160&#160" : $index == 1 ? "ЛЗ" : "ПЗ"}}
+                    <th class="type" style="height: 20px; font-size: 12px; font-weight: 400" id="th-type-{{$index}}"
+                        rowspan="1" ng-repeat="n in [].constructor(18) track by $index">
                     </th>
                 </tr>
                 </thead>
@@ -90,15 +92,19 @@
                     </tr>
 
                     <tr>
-                        <td>&#160&#160</td>
-                        <td>&#160&#160</td>
-                        <td ng-repeat="n in [].constructor(18) track by $index"> &#160&#160 </td>
+                        <td style="background: #428BCA">&#160&#160</td>
+                        <td style="background: #428BCA">&#160&#160</td>
+                        <td style="background: #428BCA; color: white;" ng-repeat="n in [].constructor(18) track by $index">
+                            {{ $index == 16 ? "ПК1" : $index == 17 ? "ПК2" : "&#160&#160" }}
+                        </td>
                     </tr>
 
                     <tr ng-repeat="student in report.students">
                         <td>{{ student.id }}</td>
                         <td>{{ student.name }}</td>
-                        <td class="marks" ng-repeat="n in [].constructor(18) track by $index">  </td>
+                        <td class="marks{{$index == 16 || $index == 17 ? '_pk' : ''}}" ng-repeat="n in [].constructor(18) track by $index" id="student-{{student.id}}-mark-{{$index}}">
+
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -108,7 +114,7 @@
 </div>
 
 <!-- popups -->
-<div class="attend-pupup" style="display: none;" id="attendPopup">
+<div class="attend-popup" style="display: none;" id="attendPopup">
     <div class="text-center">
         <div class="row" style="text-align: center; margin-top: 5px;">
             <div class="col-sm-4 col-xs-4"><button class="attend-bt not" ng-click="notAttend()">Н</button></div>
@@ -137,6 +143,46 @@
                 <button id="mark_5" class="mark-bt five" ng-click="setMark(5, '#00ca1c')">5</button>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="date-popup" style="display: none;" id="datePopup">
+    <div class="text-center">
+        <form name="datesetter">
+            <div class="row" style="text-align: center; margin-top: 5px;">
+                <input type="date" name="date" ng-model="date" ng-required="true">
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-xs-6" style="text-align: right">
+                    <span>Тип занятия</span>
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                    <select name="type" id="type-lesson" title="Тип занятия" ng-model="type">
+                        <option value="Л">Л</option>
+                        <option value="П">П</option>
+                        <option value="ЛП">ЛП</option>
+                        <option value="ПЗ">ПЗ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="text-align: center; margin-top: 5px;">
+                <button ng-disabled="!datesetter.date.$valid || !type" ng-click="setDate()">Set</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card-popup" style="display: none;" id="cardPopup">
+    <div class="text-center">
+        <form name="cardsetter">
+            <div class="row" style="text-align: center; margin-top: 5px;">
+                <input style="width: 150px" type="number" name="card" ng-model="card" ng-required="true"
+                       min="1" max="100" placeholder="балы за ПК" limit-to-max />
+            </div>
+            <div class="row" style="text-align: center; margin-top: 5px;">
+                <button ng-disabled="!card" ng-click="setCard()">Set</button>
+            </div>
+        </form>
     </div>
 </div>
 <!--/popups-->

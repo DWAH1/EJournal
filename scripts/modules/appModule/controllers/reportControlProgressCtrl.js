@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('reportControlProgressCtrl', ['$scope', '$state',
+app.controller('reportControlProgressCtrl', ['$scope', '$state', '$filter',
     '$routeParams', '$stateParams', '$http', 'reportsFactory',
-    function ($scope, $state, $routeParams, $stateParams, $http, reportsFactory) {
+    function ($scope, $state, $filter, $routeParams, $stateParams, $http, reportsFactory) {
 
 
     initJbox();
@@ -72,11 +72,35 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state',
         marksJBox.close();
     };
 
+    // date
+    $(document).on('click', 'th.report-date', function () {
+        $scope.thatDateTh = $(this);
+        dateJBox.open();
+    });
+
+    $scope.setDate = function() {
+        $($scope.thatDateTh).html($filter('date')(new Date( $scope.date),'MM.dd'));
+        $($scope.thatDateTh).css("background", "#428BCA");
+
+        // console.log("th-id", $($scope.thatDateTh).data("id"));
+        $("#th-type-"+ $($scope.thatDateTh).data("id")).html($scope.type);
+
+        // console.log("date", $filter('date')(new Date( $scope.date),'yyyy-MM-dd'));
+        $scope.date = null;
+        dateJBox.close();
+    };
+
+    $(document).on('click', 'td.marks_pk', function () {
+        $scope.cardTypeTh = $(this);
+        cardJBox.open();
+    });
+
     function initJbox() {
-        if (window.attendJBox && window.marksJBox) {
+        if (window.attendJBox && window.marksJBox && window.dateJBox) {
 
             window.attendJBox.destroy();
             window.marksJBox.destroy();
+            window.dateJBox.destroy();
 
             window.attendJBox = new jBox('Modal', {
                 width: 400,
@@ -89,6 +113,19 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state',
                 animation: 'pulse',
                 content: $('#marksPopup')
             });
+
+            window.dateJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#datePopup')
+            });
+
+            window.cardJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#cardPopup')
+            });
+
         } else {
             window.attendJBox = new jBox('Modal', {
                 width: 400,
@@ -100,6 +137,18 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state',
                 width: 400,
                 animation: 'pulse',
                 content: $('#marksPopup')
+            });
+
+            window.dateJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#datePopup')
+            });
+
+            window.cardJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#cardPopup')
             });
         }
     }

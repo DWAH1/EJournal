@@ -219,6 +219,21 @@ span.to-do {
     color: #428BCA;
 }
 
+th.report-date {
+    font-weight: 400;
+    font-size: 11px;
+    transition: all 0.3s ease 0s;
+}
+    th.report-date:hover {
+        background-color: #428BCA;
+    }
 
-
+/*th.type {*/
+    /*!*font-weight: 400;*!*/
+    /*!*font-size: 11px;*!*/
+    /*transition: all 0.3s ease 0s;*/
+/*}*/
+    /*th.type:hover {*/
+        /*background-color: #428BCA;*/
+    /*}*/
 

@@ -25,7 +25,7 @@
 
 
 /* popups */
-.attend-pupup, .marks-popup {
+.attend-popup, .marks-popup {
     color: black;
 }
 button.attend-bt, button.mark-bt {
@@ -88,3 +88,36 @@ button.attend-bt, button.mark-bt {
     }
 
 /* /mark popup */
+
+/* popup date */
+
+.date-popup, .card-popup {
+    color: black;
+}
+    .date-popup button, .card-popup button {
+        background: #428BCA;
+        color: #fff;
+        border: none;
+        width: 100px;
+        border-radius: 0;
+        outline: none;
+        transition: all 0.3s ease 0s;
+    }
+
+    .date-popup input {
+        /*border-radius: 5px;*/
+        outline: none;
+        /*border: none;*/
+        /*background-color: #428BCA;*/
+    }
+
+    .date-popup button:disabled, .card-popup button:disabled  {
+        color: black;
+        background: lightgray;
+    }
+
+    .card-popup input {
+        outline: none;
+        text-align: center;
+    }
+/* /popup date */
