@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<div class="row report-study-load" style="text-align: center" ng-show="!isLoading">
+<div class="row report-study-load" style="text-align: center" ng-show="!isLoading" id="study-load">
     <div class="center-block col-md-10" style="float: none;">
         <div class="report-head">
             <h1> {{ report.title }} </h1>
@@ -160,7 +160,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="n in [].constructor(6) track by $index">
+                <tr ng-repeat="n in [].constructor(20) track by $index">
                     <td rowspan="1" style="height: 20px" ng-repeat="n in [].constructor(14) track by $index"></td>
                 </tr>
                 <!--<tr ng-repeat="n in [].constructor(6) track by $index">-->

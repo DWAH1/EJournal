@@ -214,6 +214,11 @@ input:read-only{
     background-color: lavenderblush;
 }
 
+span.to-do {
+    font-size: 30px;
+    color: #428BCA;
+}
+
 
 
 

@@ -5,10 +5,6 @@ class StudyLoad extends Report {
         super(name);
     }
 
-    download() {
-        alert("download");
-    }
-
     init($http, $scope) {
         let report = this;
         report.getSubjects($http).then(function (res) {

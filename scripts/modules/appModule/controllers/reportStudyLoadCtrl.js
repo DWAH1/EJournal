@@ -34,6 +34,11 @@ app.controller('reportStudyLoadCtrl', ['$scope', '$state', '$routeParams',
         return input;
     };
 
+    $scope.downloadReport = function () {
+        // alert("!");
+        $scope.report.download("study-load");
+    };
+
 }]);
 
 

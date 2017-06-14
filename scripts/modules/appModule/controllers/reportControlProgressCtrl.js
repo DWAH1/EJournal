@@ -29,7 +29,10 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state',
     };
 
     $scope.downloadReport = function () {
-        $scope.report.download();
+        // $scope.isLoading = true;
+        // $scope.repot_dom_elment = "control-progress";
+        $scope.report.download("control-progress", $scope);
+        // $scope.isLoading = false;
     };
 
 }]);
