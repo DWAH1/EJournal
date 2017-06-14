@@ -132,21 +132,79 @@ app.controller('settingsCtrl', ['$scope', '$http', 'reportsFactory', 'authorizat
         //     console.log(res);
         // });
 
-        let object = {
-            login: login,
-            password: password
-        };
 
-        let req = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
 
-        $http.post(API.urls().sign_in, object, req).then(
-            function(res) { console.log(res); }, // success
-            function(res) { console.log(res); }  // error
-        );
+        // $.ajax({
+        //     type: "POST",
+        //     url: url,
+        //     data: {login: 'login', password: 'password'},
+        //     success: ,
+        //     dataType: dataType
+        // });
+
+        // let date = {login: "login", password: "password"};
+        //
+        // $.post(API.urls().sign_in, function(, status){
+        //     alert("Data: " + data + "\nStatus: " + status);
+        // });
+
+        // $.ajax({
+        //     url: API.urls().sign_in,
+        //     type:"POST",
+        //     crossDomain: true,
+        //     data: {
+        //         login: "login",
+        //         password: "password"
+        //     },
+        //     contentType:"application/json; charset=utf-8",
+        //     dataType:"json",
+        //     success: function(data, status){
+        //         console.log(data, status);
+        //     }
+        // });
+
+        $http({
+            url: API.urls().sign_in,
+            method: "POST",
+            data: $.param({ 'login': 'login', 'password': 'password' }),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            // success
+            console.log('success');
+            console.log("then : " + JSON.stringify(response));
+        }, function (response) { // optional
+            // failed
+            console.log('failed');
+            console.log(JSON.stringify(response));
+        });
+
+
+        // $.post(API.urls().sign_in,
+        // {
+        //     login: "login",
+        //     password: "password"
+        // },
+        // function(data,status){
+        //     console.log(data, status);
+        //     // alert("Data: " + data + "\nStatus: " + status);
+        // });
+
+
+        // let object = {
+        //     login: login,
+        //     password: password
+        // };
+        //
+        // let req = {
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // };
+        //
+        // $http.post(API.urls().sign_in, object, req).then(
+        //     function(res) { console.log(res); }, // success
+        //     function(res) { console.log(res); }  // error
+        // );
 
     };
 

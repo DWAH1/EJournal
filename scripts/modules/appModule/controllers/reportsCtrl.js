@@ -21,19 +21,19 @@ app.factory('reportsFactory', function () {
     return [
         {
             id: "studyLoad",
-            imageUrl: "res/img/ss.png",
+            imageUrl: "res/img/sl.png",
             type: typeReportEnum.TrainingLoad,
             name: "Учебная нагрузка"
         },
         {
             id: "controlProgress",
-            imageUrl: "res/img/ps.png",
+            imageUrl: "res/img/cp.png",
             type: typeReportEnum.AccountingStudentWork,
             name: "Учет работы студентов"
         },
         {
             id: "report3",
-            imageUrl: "res/img/ps.png",
+            imageUrl: "res/img/cp.png",
             type: typeReportEnum.Other,
             name: "Другой отчет"
         }

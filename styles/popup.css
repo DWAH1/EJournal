@@ -23,6 +23,68 @@
     background-color: #f48686;
 }
 
-/*#loginPopup.error {*/
-    /*background-color: #f48686;*/
-/*}*/
+
+/* popups */
+.attend-pupup, .marks-popup {
+    color: black;
+}
+button.attend-bt, button.mark-bt {
+    background: #428BCA;
+    color: #fff;
+    border: none;
+    width: 50px;
+    margin: 20px 0 20px 0;
+    border-radius: 0;
+    outline: none;
+    transition: all 0.3s ease 0s;
+}
+
+/* attend popup */
+    button.attend-bt.cross {
+        background: #428BCA;
+        color: #fff;
+        text-decoration: line-through;
+    }
+
+    button.attend-bt.o {
+        background: #b4ca7e;
+        color: black;
+    }
+
+    button.attend-bt.not {
+        background: #f48686;
+        color: white;
+    }
+
+    button.attend-bt:hover {
+        background: #0119ca;
+    }
+/* /attend popup */
+
+/* mark popup */
+    button.mark-bt.one {
+        background: #ca0000;
+        color: black;
+    }
+
+    button.mark-bt.two {
+        background: #f48686;
+        color: black;
+    }
+
+    button.mark-bt.three {
+        background: #f4d25d;
+        color: black;
+    }
+
+    button.mark-bt.four {
+        background: #6fca71;
+        color: black;
+    }
+
+    button.mark-bt.five {
+        background: #00ca1c;
+        color: black;
+    }
+
+/* /mark popup */

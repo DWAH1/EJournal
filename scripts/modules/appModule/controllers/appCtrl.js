@@ -14,7 +14,7 @@ app.controller('appCtrl', ['$scope', '$cookies', '$location', '$pagesSecuritySer
         });
 
         // for use inline of views
-        $scope.goTo = function(path){
+        $scope.goTo = function(path) {
             $location.path(path);
         };
         // route history

@@ -11,7 +11,55 @@ class ControlProgress extends Report {
             report.setSubjects = res;
             // add to scope
             $scope.report = report;
+
+            $scope.report.students = [
+                {
+                    id: 1,
+                    name: "Student1"
+                },
+                {
+                    id: 2,
+                    name: "Student2"
+                },
+                {
+                    id: 3,
+                    name: "Student3"
+                },
+                {
+                    id: 4,
+                    name: "Student4"
+                },
+                {
+                    id: 5,
+                    name: "Student5"
+                },
+                {
+                    id: 6,
+                    name: "Student6"
+                },
+                {
+                    id: 7,
+                    name: "Student7"
+                },
+                {
+                    id: 1,
+                    name: "Student1"
+                },
+                {
+                    id: 2,
+                    name: "Student2"
+                },
+                {
+                    id: 3,
+                    name: "Student3"
+                }
+            ];
+
             $scope.isLoading = false;
+
+
+
+
         });
     }
 

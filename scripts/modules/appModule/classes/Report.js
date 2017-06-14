@@ -48,7 +48,7 @@ class Report {
         });
     }
 
-    download(dom_element_id, $scope) {
+    download(dom_element_id) {
 
         let quotes = document.getElementById(dom_element_id);
         html2canvas(quotes, {

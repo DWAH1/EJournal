@@ -4,13 +4,15 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state',
     '$routeParams', '$stateParams', '$http', 'reportsFactory',
     function ($scope, $state, $routeParams, $stateParams, $http, reportsFactory) {
 
+
+    initJbox();
+
     $scope.isLoading = true;
     // retrieve name of report
     let title = _.find(reportsFactory, {id: $state.current.name}).name;
     // create and init report
     (new ControlProgress(title)).init($http, $scope);
     // $scope = new ControlProgress(title);
-
 
     $scope.changeReport = function () {
         $scope.report.students = $scope.report.students.concat([{id: 4, name: "NEW"}]);
@@ -29,11 +31,78 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state',
     };
 
     $scope.downloadReport = function () {
-        // $scope.isLoading = true;
-        // $scope.repot_dom_elment = "control-progress";
         $scope.report.download("control-progress", $scope);
-        // $scope.isLoading = false;
     };
+
+
+    // attend
+    $(document).on('click', 'td.attend', function () {
+        console.log("parent", $scope.$parent);
+        $scope.thatAttendTd = $(this);
+        attendJBox.open();
+    });
+
+    $scope.notAttend = function () {
+        $($scope.thatAttendTd).html("Н");
+        $($scope.thatAttendTd).css("background", "#f48686");
+        attendJBox.close();
+    };
+
+    $scope.o = function () {
+        $($scope.thatAttendTd).html("О");
+        $($scope.thatAttendTd).css("background", "#b4ca7e");
+        attendJBox.close();
+    };
+
+    $scope.attend = function attend() {
+        $($scope.thatAttendTd).html("<span style='text-decoration: line-through'>Н<span>");
+        $($scope.thatAttendTd).css("background", "#428BCA");
+        attendJBox.close();
+    };
+
+    // marks
+    $(document).on('click', 'td.marks', function () {
+        $scope.thatMarksTd = $(this);
+        marksJBox.open();
+    });
+
+    $scope.setMark = function(mark, color) {
+        $($scope.thatMarksTd).html(mark);
+        $($scope.thatMarksTd).css("background", color);
+        marksJBox.close();
+    };
+
+    function initJbox() {
+        if (window.attendJBox && window.marksJBox) {
+
+            window.attendJBox.destroy();
+            window.marksJBox.destroy();
+
+            window.attendJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#attendPopup'),
+            });
+
+            window.marksJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#marksPopup')
+            });
+        } else {
+            window.attendJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#attendPopup'),
+            });
+
+            window.marksJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#marksPopup')
+            });
+        }
+    }
 
 }]);
 
