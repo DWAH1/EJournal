@@ -208,4 +208,25 @@ app.controller('settingsCtrl', ['$scope', '$http', 'reportsFactory', 'authorizat
 
     };
 
+    $scope.test = function () {
+        $scope.isLoading = true;
+
+        $http({
+            url: "http://localhost:3001/books",
+            method: "GET",
+            // data: $.param({ 'login': 'login', 'password': 'password' }),
+            // headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            // success
+            console.log('success', response);
+
+            $scope.isLoading = false;
+            // console.log("then : " + JSON.stringify(response));
+        }, function (response) { // optional
+            // failed
+            console.log('failed', response);
+            // console.log(JSON.stringify(response));
+        });
+    };
+
 }]);

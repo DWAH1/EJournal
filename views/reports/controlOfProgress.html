@@ -18,10 +18,13 @@
                     </button>
                 </li>
                 <li>
-                    <button ng-click="unpassedSelect()">
+                    <button ng-click="unpassed()">
                         <span class="glyphicon glyphicon-bullhorn"></span> Unpassed
                     </button>
                 </li>
+                <button style="float: right" ng-click="sync()">
+                    <span class="glyphicon glyphicon-refresh"></span> Sync
+                </button>
             </ul>
         </div>
     </div>
@@ -88,22 +91,31 @@
                     <tr ng-repeat="student in report.students">
                         <td>{{ student.id }}</td>
                         <td>{{ student.name }}</td>
-                        <td class="attend" ng-repeat="n in [].constructor(18) track by $index">  </td>
+                        <td class="attend
+                        {{student.attends[$index] == 'H' ? 'h' : student.attends[$index] == 'O' ?
+                         'o' : student.attends[$index] == 'HH' ? 'not_h' : ''}}" ng-repeat="n in [].constructor(18) track by $index">
+                            {{student.attends[$index] == 'HH' ? 'H' : student.attends[$index] != 0 ? student.attends[$index] : ''}}
+                        </td>
                     </tr>
 
                     <tr>
-                        <td style="background: #428BCA">&#160&#160</td>
-                        <td style="background: #428BCA">&#160&#160</td>
-                        <td style="background: #428BCA; color: white;" ng-repeat="n in [].constructor(18) track by $index">
-                            {{ $index == 16 ? "ПК1" : $index == 17 ? "ПК2" : "&#160&#160" }}
+                        <td style="background: #428BCA"></td>
+                        <td style="background: #428BCA"></td>
+                        <td class="comments{{$index != 16 && $index != 17 ? '' : '_pk'}}" style="background: #428BCA; color: white;" ng-repeat="n in [].constructor(18) track by $index">
+                            {{ $index == 16 ? "ПК1" : $index == 17 ? "ПК2" : "" }}
                         </td>
                     </tr>
 
                     <tr ng-repeat="student in report.students">
                         <td>{{ student.id }}</td>
                         <td>{{ student.name }}</td>
-                        <td class="marks{{$index == 16 || $index == 17 ? '_pk' : ''}}" ng-repeat="n in [].constructor(18) track by $index" id="student-{{student.id}}-mark-{{$index}}">
-
+                        <td class="marks{{$index == 16 || $index == 17 ? '_pk' : ''}}
+                        {{student.marks[$index] == 5 ? 'five' : student.marks[$index] == 4
+                        ? 'four' : student.marks[$index] == 3 ? 'three' : student.marks[$index] == 2
+                        ? 'two' : student.marks[$index] == 1 ? 'one' : ''}}"
+                            data-pk="{{$index == 16 ? '1' : $index == 17 ? '2' : ''}}"
+                            ng-repeat="n in [].constructor(18) track by $index" id="student-{{student.id}}-mark-{{$index}}">
+                            {{$index == 16 ? student.pk_1 : $index == 17 ? student.pk_2 : student.marks[$index] != 0 ? student.marks[$index] : ''}}
                         </td>
                     </tr>
                 </tbody>
@@ -175,14 +187,39 @@
 <div class="card-popup" style="display: none;" id="cardPopup">
     <div class="text-center">
         <form name="cardsetter">
+            <!--<div class="row">-->
+                <!--<span>max</span>-->
+            <!--</div>-->
             <div class="row" style="text-align: center; margin-top: 5px;">
                 <input style="width: 150px" type="number" name="card" ng-model="card" ng-required="true"
-                       min="1" max="100" placeholder="балы за ПК" limit-to-max />
+                       min="1" max="{{pk == 1 ? currentSubject.pk_1 : currentSubject.pk_2 }}" limit-to-max />
             </div>
             <div class="row" style="text-align: center; margin-top: 5px;">
                 <button ng-disabled="!card" ng-click="setCard()">Set</button>
             </div>
         </form>
+    </div>
+</div>
+
+<div class="card-popup" style="display: none;" id="commentPopup">
+    <div class="text-center">
+        <form name="commentsetter">
+            <div class="row" style="text-align: center; margin-top: 5px;">
+                <input style="width: 150px" type="text" name="comment" ng-model="comment" ng-required="true"
+                        placeholder="Комментарий"/>
+            </div>
+            <div class="row" style="text-align: center; margin-top: 5px;">
+                <button ng-disabled="!commentsetter.comment.$valid" ng-click="setComment()">Set</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card-popup" style="display: none;" id="unpassedPopup">
+    <div class="text-center">
+        <div class="row" ng-repeat="student in report.unpassed_students">
+            <span>{{student.id}}</span> {{student.name}}
+        </div>
     </div>
 </div>
 <!--/popups-->

@@ -35,6 +35,7 @@ select:hover {
 }
 
 table {
+    table-layout: fixed;
     border-color: black;
 }
 
@@ -228,12 +229,51 @@ th.report-date {
         background-color: #428BCA;
     }
 
-/*th.type {*/
-    /*!*font-weight: 400;*!*/
-    /*!*font-size: 11px;*!*/
-    /*transition: all 0.3s ease 0s;*/
-/*}*/
-    /*th.type:hover {*/
-        /*background-color: #428BCA;*/
-    /*}*/
+td.comments {
+    font-size: 11px;
+    padding: 0;
+    overflow: hidden;
+}
+
+td.attend.h {
+    background-color: #f48686;
+}
+td.attend.o {
+    background-color: #b4ca7e;
+}
+td.attend.not_h {
+    background-color: #428BCA;
+    text-decoration: line-through;
+}
+
+
+td.marks.one {
+    background-color: #ca0000;
+}
+td.marks.two {
+    background-color: #f48686;
+}
+td.marks.three {
+    background-color: #f4d25d;
+}
+td.marks.four {
+    background-color: #6fca71;
+}
+td.marks.five {
+    background-color: #00ca1c;
+}
+
+td.marks_pk {
+    background-color: bisque;
+}
+
+td.marks_pk:hover {
+    background-color: #f4d25d;
+}
+
+.report-study-load td {
+    height: 25px !important;
+    font-size: 12px !important;
+}
+
 

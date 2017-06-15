@@ -12,54 +12,7 @@ class ControlProgress extends Report {
             // add to scope
             $scope.report = report;
 
-            $scope.report.students = [
-                {
-                    id: 1,
-                    name: "Student1"
-                },
-                {
-                    id: 2,
-                    name: "Student2"
-                },
-                {
-                    id: 3,
-                    name: "Student3"
-                },
-                {
-                    id: 4,
-                    name: "Student4"
-                },
-                {
-                    id: 5,
-                    name: "Student5"
-                },
-                {
-                    id: 6,
-                    name: "Student6"
-                },
-                {
-                    id: 7,
-                    name: "Student7"
-                },
-                {
-                    id: 8,
-                    name: "Student8"
-                },
-                {
-                    id: 9,
-                    name: "Student9"
-                },
-                {
-                    id: 10,
-                    name: "Student10"
-                }
-            ];
-
             $scope.isLoading = false;
-
-
-
-
         });
     }
 
@@ -70,7 +23,11 @@ class ControlProgress extends Report {
             url: API.urls().subject_groups
         }).then(function successCallback(response) {
 
+            $scope.currentSubject = new Subject(currentSubjectId, 45, 55);
+
             let groupsOfSubject = _.filter(response.data, {subject_id: currentSubjectId});
+
+            console.log(groupsOfSubject);
 
             $http({
                 method: 'GET',
@@ -86,7 +43,18 @@ class ControlProgress extends Report {
                 }
 
                 $scope.report.groups = currentGroups;
-                $scope.isLoading = false;
+
+                $http({
+                    method: 'POST',
+                    url: API.urls().students_group,
+                    data: $scope.report.groups[0]
+                }).then(function successCallback(response) {
+                    $scope.report.students = response.data;
+                    $scope.isLoading = false;
+                });
+
+                // $scope.report.students = studentsFactory;
+
             });
 
         });

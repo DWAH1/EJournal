@@ -1,6 +1,7 @@
-let app = angular.module('appModule', ['ngRoute', 'ui.router', 'ngCookies', 'authorizationModule', 'securityModule']);
+let app = angular.module('appModule', ['ngRoute', 'ui.router', 'ngCookies',
+    'authorizationModule', 'securityModule']);
 
-app.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/otherwise');
 

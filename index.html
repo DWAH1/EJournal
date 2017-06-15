@@ -24,6 +24,7 @@
 
 <!-- lib js -->
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-mocks.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
 
@@ -48,9 +49,9 @@
 <script src="scripts/modules/appModule/controllers/reportStudyLoadCtrl.js"></script>
 <script src="scripts/modules/appModule/controllers/reportControlProgressCtrl.js"></script>
 <script src="scripts/modules/appModule/classes/Report.js"></script>
+<script src="scripts/modules/appModule/classes/Subject.js"></script>
 <script src="scripts/modules/appModule/classes/ControlProgress.js"></script>
 <script src="scripts/modules/appModule/classes/StudyLoad.js"></script>
-<script src="scripts/modules/appModule/services/services.js"></script>
 
 
 <!-- directives -->
@@ -75,7 +76,7 @@
 
     <!-- popup-failure -->
     <div class="failure-popup" style="display: none" id="failurePopup">
-        <div class="text-center">
+        <div class="text-center" style="text-align: center">
             Fail
         </div>
     </div>

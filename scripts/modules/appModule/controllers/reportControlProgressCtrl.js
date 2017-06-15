@@ -4,7 +4,6 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$filter',
     '$routeParams', '$stateParams', '$http', 'reportsFactory',
     function ($scope, $state, $filter, $routeParams, $stateParams, $http, reportsFactory) {
 
-
     initJbox();
 
     $scope.isLoading = true;
@@ -91,16 +90,76 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$filter',
     };
 
     $(document).on('click', 'td.marks_pk', function () {
-        $scope.cardTypeTh = $(this);
-        cardJBox.open();
+        if ($scope.currentSubject) {
+
+            if ($(this).data('pk') == 1) {
+                $("#cardPopup input[type='number']")
+                    .attr("placeholder", "max " + $scope.currentSubject.pk_1);
+            } else if ($(this).data('pk') == 2) {
+                $("#cardPopup input[type='number']")
+                    .attr("placeholder", "max " + $scope.currentSubject.pk_2);
+            }
+
+            $scope.pk = $(this).data('pk');
+            $scope.thatCardTd = $(this);
+            cardJBox.open();
+        }
     });
 
+    $scope.setCard = function () {
+        $($scope.thatCardTd).html($scope.card);
+        cardJBox.close();
+    };
+
+    $(document).on('click', 'td.comments', function () {
+        $scope.thatCommentTd = $(this);
+        commentJBox.open();
+    });
+
+    $scope.setComment = function () {
+        $($scope.thatCommentTd).html($scope.comment);
+        commentJBox.close();
+    };
+
+    $scope.sync = function () {
+        $scope.isLoading = true;
+        $http({
+            url: API.urls().sync,
+            method: "GET"
+        }).then(function () {
+            // success
+            $scope.isLoading = false;
+        }, function () { // optional
+            $scope.isLoading = false;
+        });
+    };
+
+    $scope.unpassed = function () {
+        $scope.report.unpassed_students = [];
+
+        for (let student in $scope.report.students) {
+            if (!$scope.report.students[student].pk_1 || !$scope.report.students[student].pk_2) {
+                console.log($scope.report.students[student].name);
+                $scope.report.unpassed_students =
+                    $scope.report.unpassed_students.concat($scope.report.students[student]);
+            }
+        }
+
+        unpassedJBox.open();
+    };
+
     function initJbox() {
-        if (window.attendJBox && window.marksJBox && window.dateJBox) {
+        if (window.editJBox) {
+            window.editJBox.destroy();
+        }
+
+        if (window.attendJBox) {
 
             window.attendJBox.destroy();
             window.marksJBox.destroy();
             window.dateJBox.destroy();
+            window.commentJBox.destroy();
+            window.unpassedJBox.destroy();
 
             window.attendJBox = new jBox('Modal', {
                 width: 400,
@@ -124,6 +183,20 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$filter',
                 width: 400,
                 animation: 'pulse',
                 content: $('#cardPopup')
+            });
+
+            window.commentJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#commentPopup')
+            });
+
+            window.unpassedJBox = new jBox('Modal', {
+                id: "jBoxFailure",
+                width: 400,
+                height: 500,
+                animation: 'pulse',
+                content: $('#unpassedPopup')
             });
 
         } else {
@@ -149,6 +222,20 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$filter',
                 width: 400,
                 animation: 'pulse',
                 content: $('#cardPopup')
+            });
+
+            window.commentJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#commentPopup')
+            });
+
+            window.unpassedJBox = new jBox('Modal', {
+                id: "jBoxFailure",
+                width: 400,
+                height: 500,
+                animation: 'pulse',
+                content: $('#unpassedPopup')
             });
         }
     }

@@ -4,9 +4,9 @@ app.controller('reportStudyLoadCtrl', ['$scope', '$state', '$routeParams',
     '$stateParams', '$http', 'reportsFactory', '$userProvider',
     function ($scope, $state, $routeParams, $stateParams, $http, reportsFactory, $userProvider) {
 
+    initJbox();
     console.log($userProvider.getUserRole());
     // console.log($userProvider.getUserRole().indexOf(0) != -1 ? true : false);
-
 
     $scope.isReadOnly = $userProvider.getUserRole().indexOf(0) != -1 ? false : true;
     $scope.isLoading = true;
@@ -35,23 +35,50 @@ app.controller('reportStudyLoadCtrl', ['$scope', '$state', '$routeParams',
     };
 
     $scope.downloadReport = function () {
-        // alert("!");
         $scope.report.download("study-load");
     };
 
+    $(document).on('click', 'td', function () {
+        $scope.thatCurentTd = $(this);
+        editJBox.open();
+    });
+
+    $scope.setEdit = function () {
+        $($scope.thatCurentTd).html($scope.edit);
+        editJBox.close();
+    };
+
+    $scope.sync = function () {
+        $scope.isLoading = true;
+        $http({
+            url: API.urls().sync,
+            method: "GET"
+        }).then(function () {
+            // success
+            $scope.isLoading = false;
+        }, function () { // optional
+            $scope.isLoading = false;
+        });
+    };
+
+    function initJbox() {
+        if (window.editJBox) {
+            window.editJBox.destroy();
+            window.editJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#editPopup'),
+            });
+        } else {
+            window.editJBox = new jBox('Modal', {
+                width: 400,
+                animation: 'pulse',
+                content: $('#editPopup'),
+            });
+        }
+    }
+
 }]);
-
-
-app.factory('reportStudyLoadFactory', function ($http) {
-
-   //  // let report = {name: "dd", id: 21};
-   //
-   //  console.log("in factory", $http);
-   //  // let report = ;
-   // let report = new ControlProgress("1", "2", "33", $http);
-   //
-   //  return report;
-});
 
 
 
