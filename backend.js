@@ -10,15 +10,6 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors());
 
-var books = [
-    {
-        name: "Hello"
-    },
-    {
-        name: "Hello2"
-    }
-];
-
 var groupStudents = {
     "942": [
                 {
@@ -39,7 +30,7 @@ var groupStudents = {
                 },
                 {
                     id: 3,
-                        name: "Student3",
+                    name: "Student3",
                     marks: [0, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0],
                     pk_1: 30,
                     pk_2: 50,
@@ -47,40 +38,46 @@ var groupStudents = {
                 },
                 {
                     id: 4,
-                        name: "Student4",
-                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0]
+                    name: "Student4",
+                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
+                    attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 5,
-                        name: "Student5",
-                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 4, 3, 0, 0]
+                    name: "Student5",
+                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 4, 3, 0, 0],
+                    attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 6,
-                        name: "Student6",
+                    name: "Student6",
                     marks: [4, 0, 4, 0, 0, 3, 0, 0, 4, 0, 0, 0, 0, 3, 0, 0],
                     attends: [0, 0, 0, "H", 0, 0, 0, 0, "HH", 0, 0, 0, 0, 0, "O", 0, 0, "H"]
                 },
                 {
                     id: 7,
-                        name: "Student7",
-                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0]
+                    name: "Student7",
+                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
+                    attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 8,
-                        name: "Student8",
+                    name: "Student8",
                     marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
-                    pk_1: 25
+                    pk_1: 25,
+                    attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 9,
-                        name: "Student9",
-                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0]
+                    name: "Student9",
+                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
+                    attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 10,
-                        name: "Student10",
-                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0]
+                    name: "Student10",
+                    marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
+                    attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 }
             ],
     "742": [
@@ -107,12 +104,14 @@ var groupStudents = {
         {
             id: 4,
             name: "Student4",
-            marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0]
+            marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
+            attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 5,
             name: "Student5",
-            marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 4, 3, 0, 0]
+            marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 4, 3, 0, 0],
+            attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 6,
@@ -126,30 +125,31 @@ var groupStudents = {
             marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
             pk_1: 10,
             pk_2: 20,
+            attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 8,
             name: "Student8",
             marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
-            pk_1: 25
+            pk_1: 25,
+            attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 9,
             name: "Student9",
-            marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0]
+            marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
+            attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 10,
             name: "Student10",
-            marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0]
+            marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
+            attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         }
     ],
     "842": []
 };
 
-app.get('/books', function (req, res) {
-    res.send(books);
-});
 
 app.get('/groups_students', function (req, res) {
     res.send(groupStudents['942']);
@@ -160,11 +160,17 @@ app.get('/sync', function (req, res) {
     setTimeout(function () {res.send(groupStudents);}, 1000);
 });
 
+app.put('/sync_report', function (req, res) {
+   groupStudents[req.body.group_number] = req.body.students;
+   setTimeout(function () {res.send(200);}, 1000);
+});
+
 app.post('/groups_students', function (req, res) {
     console.log(req.body.number);
     console.log(groupStudents[req.body.number]);
     res.send(200, groupStudents[req.body.number]);
 });
+
 
 var server = app.listen(3001, function() {
    console.log('backend started!');

@@ -93,7 +93,7 @@
                         <td>{{ student.name }}</td>
                         <td class="attend
                         {{student.attends[$index] == 'H' ? 'h' : student.attends[$index] == 'O' ?
-                         'o' : student.attends[$index] == 'HH' ? 'not_h' : ''}}" ng-repeat="n in [].constructor(18) track by $index">
+                         'o' : student.attends[$index] == 'HH' ? 'not_h' : ''}}" id="student-{{student.id}}-attend-{{$index}}" ng-repeat="n in [].constructor(18) track by $index">
                             {{student.attends[$index] == 'HH' ? 'H' : student.attends[$index] != 0 ? student.attends[$index] : ''}}
                         </td>
                     </tr>
@@ -129,9 +129,9 @@
 <div class="attend-popup" style="display: none;" id="attendPopup">
     <div class="text-center">
         <div class="row" style="text-align: center; margin-top: 5px;">
-            <div class="col-sm-4 col-xs-4"><button class="attend-bt not" ng-click="notAttend()">Н</button></div>
-            <div class="col-sm-4 col-xs-4"><button class="attend-bt o" ng-click="o()">О</button></div>
-            <div class="col-sm-4 col-xs-4"><button class="attend-bt cross" ng-click="attend()">Н</button></div>
+            <div class="col-sm-4 col-xs-4"><button class="attend-bt not" ng-click="setAttend('H')">Н</button></div>
+            <div class="col-sm-4 col-xs-4"><button class="attend-bt o" ng-click="setAttend('O')">О</button></div>
+            <div class="col-sm-4 col-xs-4"><button class="attend-bt cross" ng-click="setAttend('HH')">Н</button></div>
         </div>
     </div>
 </div>

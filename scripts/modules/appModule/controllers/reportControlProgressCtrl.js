@@ -41,7 +41,43 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$filter',
         attendJBox.open();
     });
 
+
+    $scope.setAttend = function (attend) {
+        let student_id = $($scope.thatAttendTd).attr('id').split('-')[1] - 1;
+        let attend_id = $($scope.thatAttendTd).attr('id').split('-')[3];
+
+        console.log("attend", attend_id);
+        console.log("st-id", student_id);
+
+        switch (attend) {
+            case 'H':
+                $($scope.thatAttendTd).html("Н");
+                $($scope.thatAttendTd).css("background", "#f48686");
+
+                break;
+            case 'HH':
+                $($scope.thatAttendTd).html("<span style='text-decoration: line-through'>Н<span>");
+                $($scope.thatAttendTd).css("background", "#428BCA");
+                break;
+            case 'O':
+                $($scope.thatAttendTd).html("О");
+                $($scope.thatAttendTd).css("background", "#b4ca7e");
+                break;
+        }
+
+        $scope.report.students[student_id].attends[attend_id] = attend;
+
+        // $($scope.thatAttendTd).html("Н");
+        // $($scope.thatAttendTd).css("background", "#f48686");
+        attendJBox.close();
+    };
+
     $scope.notAttend = function () {
+        let student_id = $($scope.thatAttendTd).attr('id').split('-')[1] - 1;
+        let attend_id = $($scope.thatAttendTd).attr('id').split('-')[3];
+
+        console.log("attend", attend_id);
+
         $($scope.thatAttendTd).html("Н");
         $($scope.thatAttendTd).css("background", "#f48686");
         attendJBox.close();
@@ -68,6 +104,15 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$filter',
     $scope.setMark = function(mark, color) {
         $($scope.thatMarksTd).html(mark);
         $($scope.thatMarksTd).css("background", color);
+
+        let student_id = $($scope.thatMarksTd).attr('id').split('-')[1] - 1;
+        let mark_id = $($scope.thatMarksTd).attr('id').split('-')[3];
+
+        // console.log("student_id", student_id);
+        // console.log("mark_id", mark_id);
+
+        $scope.report.students[student_id].marks[mark_id] = mark;
+
         marksJBox.close();
     };
 
@@ -107,6 +152,23 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$filter',
     });
 
     $scope.setCard = function () {
+        console.log("f", $($scope.thatCardTd).data('pk'));
+
+        let student_id = $($scope.thatCardTd).attr('id').split('-')[1] - 1;
+        // let mark_id = $($scope.thatCardTd).attr('id').split('-')[3] - 1;
+        //
+        // console.log("student_id", student_id);
+        // console.log("mark_id", mark_id);
+        // console.log("student", $scope.report.students[student_id]);
+
+        if ($scope.pk === 1) {
+            $scope.report.students[student_id].pk_1 = $scope.card;
+            console.log("student", $scope.report.students[student_id].pk_1);
+        } else if ($scope.pk === 2) {
+            $scope.report.students[student_id].pk_2 = $scope.card;
+            console.log("student", $scope.report.students[student_id].pk_2);
+        }
+
         $($scope.thatCardTd).html($scope.card);
         cardJBox.close();
     };
@@ -122,14 +184,20 @@ app.controller('reportControlProgressCtrl', ['$scope', '$state', '$filter',
     };
 
     $scope.sync = function () {
+        console.log('currentGroup', $scope.report.groups[0].number);
         $scope.isLoading = true;
         $http({
-            url: API.urls().sync,
-            method: "GET"
+            url: API.urls().sync_report,
+            method: "PUT",
+            data: {
+                group_number: $scope.report.groups[0].number,
+                students: $scope.report.students
+            }
         }).then(function () {
             // success
             $scope.isLoading = false;
-        }, function () { // optional
+        }, function () {
+            // fail
             $scope.isLoading = false;
         });
     };
