@@ -90,7 +90,7 @@
                 <tbody>
                     <tr ng-repeat="student in report.students">
                         <td>{{ student.id }}</td>
-                        <td>{{ student.name }}</td>
+                        <td class="student-name">{{ student.name }}</td>
                         <td class="attend
                         {{student.attends[$index] == 'H' ? 'h' : student.attends[$index] == 'O' ?
                          'o' : student.attends[$index] == 'HH' ? 'not_h' : ''}}" id="student-{{student.id}}-attend-{{$index}}" ng-repeat="n in [].constructor(18) track by $index">
@@ -108,7 +108,7 @@
 
                     <tr ng-repeat="student in report.students">
                         <td>{{ student.id }}</td>
-                        <td>{{ student.name }}</td>
+                        <td class="student-name">{{ student.name }}</td>
                         <td class="marks{{$index == 16 || $index == 17 ? '_pk' : ''}}
                         {{student.marks[$index] == 5 ? 'five' : student.marks[$index] == 4
                         ? 'four' : student.marks[$index] == 3 ? 'three' : student.marks[$index] == 2
@@ -217,8 +217,11 @@
 
 <div class="card-popup" style="display: none;" id="unpassedPopup">
     <div class="text-center">
-        <div class="row" ng-repeat="student in report.unpassed_students">
-            <span>{{student.id}}</span> {{student.name}}
+        <div class="row">
+            <h2>Unpassed</h2>
+        </div>
+        <div class="row" ng-repeat="student in report.unpassed_students track by $index">
+            <span>{{$index + 1}}.</span> {{student.name}}
         </div>
     </div>
 </div>

@@ -14,7 +14,7 @@ var groupStudents = {
     "942": [
                 {
                     id: 1,
-                    name: "Student1",
+                    name: "Student1 Studentov",
                     marks: [0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0],
                     pk_1: 40,
                     pk_2: 50,
@@ -22,7 +22,7 @@ var groupStudents = {
                 },
                 {
                     id: 2,
-                    name: "Student2",
+                    name: "Student2 Studentov",
                     marks: [0, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0],
                     pk_1: 30,
                     pk_2: 40,
@@ -30,7 +30,7 @@ var groupStudents = {
                 },
                 {
                     id: 3,
-                    name: "Student3",
+                    name: "Student3 Studentov",
                     marks: [0, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0],
                     pk_1: 30,
                     pk_2: 50,
@@ -38,44 +38,44 @@ var groupStudents = {
                 },
                 {
                     id: 4,
-                    name: "Student4",
+                    name: "Student4 Studentov",
                     marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
                     attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 5,
-                    name: "Student5",
+                    name: "Student5 Studentov",
                     marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 4, 3, 0, 0],
                     attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 6,
-                    name: "Student6",
+                    name: "Student6 Studentov",
                     marks: [4, 0, 4, 0, 0, 3, 0, 0, 4, 0, 0, 0, 0, 3, 0, 0],
                     attends: [0, 0, 0, "H", 0, 0, 0, 0, "HH", 0, 0, 0, 0, 0, "O", 0, 0, "H"]
                 },
                 {
                     id: 7,
-                    name: "Student7",
+                    name: "Student7 Studentov",
                     marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
                     attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 8,
-                    name: "Student8",
+                    name: "Student8 Studentov",
                     marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
                     pk_1: 25,
                     attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 9,
-                    name: "Student9",
+                    name: "Student9 Studentov",
                     marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
                     attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 },
                 {
                     id: 10,
-                    name: "Student10",
+                    name: "Student10 Studentov",
                     marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
                     attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 }
@@ -83,19 +83,19 @@ var groupStudents = {
     "742": [
         {
             id: 1,
-            name: "Student1",
+            name: "Student1 Studentov",
             marks: [1, 1, 1, 0, 1, 0, 1, 0, 5, 0, 0, 0, 0, 1, 0, 0],
             attends: ["H", "H", "H", "H", "H", "H", "H", "O", "H", "H", "H", "H", "H", "H", "H", "H", 0, 0]
         },
         {
             id: 2,
-            name: "Student2",
+            name: "Student2 Studentov",
             marks: [0, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0],
             attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "O", 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 3,
-            name: "Student3",
+            name: "Student3 Studentov",
             marks: [0, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0],
             pk_1: 30,
             pk_2: 50,
@@ -103,19 +103,19 @@ var groupStudents = {
         },
         {
             id: 4,
-            name: "Student4",
+            name: "Student4 Studentov",
             marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
             attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 5,
-            name: "Student5",
+            name: "Student5 Studentov",
             marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 4, 3, 0, 0],
             attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 6,
-            name: "Student6",
+            name: "Student6 Studentov",
             marks: [4, 0, 4, 0, 0, 3, 0, 0, 4, 0, 0, 0, 0, 3, 0, 5],
             attends: [0, 0, 0, "H", 0, 0, "O", 0, "HH", 0, 0, 0, 0, 0, "O", 0, 0, "H"]
         },
@@ -129,20 +129,20 @@ var groupStudents = {
         },
         {
             id: 8,
-            name: "Student8",
+            name: "Студент Ivanov",
             marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
             pk_1: 25,
             attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 9,
-            name: "Student9",
+            name: "Student9 Студентов",
             marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
             attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
         {
             id: 10,
-            name: "Student10",
+            name: "Student10 Studentov",
             marks: [1, 0, 2, 0, 0, 3, 0, 0, 5, 0, 0, 0, 0, 3, 0, 0],
             attends: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         }

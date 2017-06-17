@@ -276,4 +276,8 @@ td.marks_pk:hover {
     font-size: 12px !important;
 }
 
+.student-name {
+    padding-left: 10px;
+    text-align: left;
+}
 
